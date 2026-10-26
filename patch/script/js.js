@@ -14,15 +14,23 @@ function button_yt(id){
 }
 
 
+function startVoice() {
+  const r = new webkitSpeechRecognition();
+  r.lang = "tr-TR";
+  r.onresult = e => ddocument.querySelector("#text").value =
+    e.results[0][0].transcript;
+  r.start();
+}
 
+
+/*
 window.addEventListener("keydown", (e) => {
   const key = (e.key && e.key !== "Unidentified") ? e.key : (e.keyCode ?? e.which);
 
-  document.querySelector("#text").value = key;
-
+  //document.querySelector("#text").value = key;
   //msg("war", key);
 });
-
+*/
 
 
 function include(url) {

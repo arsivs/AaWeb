@@ -9,9 +9,21 @@ window.onload = () => {
 
 
 
-function button_yt(e){
-	document.body.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/OUWF_ZVll94?si=Qms7hQ97wHWtpev3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+function button_yt(id){
+	document.querySelector(".rt").innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+id+'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
 }
+
+
+
+window.addEventListener("keydown", (e) => {
+  const key = (e.key && e.key !== "Unidentified") ? e.key : (e.keyCode ?? e.which);
+
+  document.querySelector("#text").value = key;
+
+  //msg("war", key);
+});
+
+
 
 function include(url) {
 	var script  = document.createElement('script');

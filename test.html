@@ -1,0 +1,530 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediaFlow</title>
+
+<style>
+
+:root {
+    --bg: #07101f;
+    --panel: #0c192c;
+    --panel-light: #10213a;
+    --border: #1b3555;
+    --text: #f1f6ff;
+    --muted: #91a5c2;
+    --purple: #168cff;
+    --blue: #42b5ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 18px;
+    background:
+        radial-gradient(
+            ellipse at 80% 0%,
+            #142b4b 0%,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 0% 100%,
+            #0b1b33 0%,
+            transparent 40%
+        ),
+        var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+/* ANA DÜZEN */
+
+.container {
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: 18px;
+    min-height: calc(100vh - 36px);
+}
+
+/* SOL PANEL */
+
+.left-panel {
+    min-width: 0;
+    padding: 18px;
+    background: linear-gradient(
+        145deg,
+        #0e1d32,
+        #091526
+    );
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 10px 35px #02081435;
+}
+
+/* ARAMA KUTUSU */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    margin-bottom: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #09172a,
+        #0c1c32
+    );
+
+    border: 1px solid #254568;
+    border-radius: 11px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.search-box:focus-within {
+    border-color: #168cff;
+    box-shadow:
+        0 0 0 1px #168cff40,
+        0 0 20px #168cff18;
+}
+
+.search-box input {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 9px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.search-box input::placeholder {
+    color: #7289a8;
+}
+
+/* ARAMA BUTONU */
+
+.search-box button {
+    width: 40px;
+    height: 38px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(
+        135deg,
+        #087cff,
+        #42b5ff
+    );
+
+    color: #ffffff;
+    font-size: 21px;
+    cursor: pointer;
+
+    box-shadow: 0 3px 12px #168cff30;
+
+    transition:
+        filter .2s ease,
+        box-shadow .2s ease;
+}
+
+.search-box button:hover {
+    filter: brightness(1.13);
+    box-shadow: 0 4px 18px #168cff45;
+}
+
+.search-box button:active {
+    filter: brightness(.95);
+}
+
+/* BÖLÜM BAŞLIĞI */
+
+.section-title {
+    margin-bottom: 14px;
+    color: #e1ecff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* SONUÇ LİSTESİ */
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* SONUÇ KARTI */
+
+.result-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 11px 10px;
+
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    transition:
+        background .22s ease,
+        border-color .22s ease,
+        transform .22s ease,
+        box-shadow .22s ease;
+}
+
+.result-item:hover {
+    background: linear-gradient(
+        110deg,
+        #112b48,
+        #0d2037
+    );
+
+    border-color: #244b73;
+    transform: translateY(-1px);
+}
+
+.result-item.active {
+    background: linear-gradient(
+        110deg,
+        #12375c,
+        #0d2340
+    );
+
+    border-color: #168cff;
+
+    box-shadow:
+        inset 3px 0 0 #168cff,
+        0 4px 18px #07101f30;
+}
+
+/* POSTER */
+
+.poster {
+    width: 62px;
+    height: 84px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-radius: 8px;
+
+    background: linear-gradient(
+        145deg,
+        #20598a,
+        #102542 65%,
+        #091526
+    );
+
+    border: 1px solid #28527b;
+
+    color: #d9ecff;
+    font-size: 24px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 12px #02081430;
+}
+
+/* İLERİDE POSTER GÖRSELİ EKLENİRSE */
+
+.poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* SONUÇ BİLGİLERİ */
+
+.result-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.result-info h3 {
+    margin-bottom: 7px;
+
+    color: #edf4ff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.result-info p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* SAĞ OK */
+
+.arrow {
+    flex-shrink: 0;
+    color: #6385ad;
+    font-size: 23px;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+.result-item:hover .arrow,
+.result-item.active .arrow {
+    color: #42b5ff;
+    transform: translateX(2px);
+}
+
+/* SAĞ PANEL */
+
+.right-panel {
+    min-width: 0;
+    min-height: 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px;
+
+    background: linear-gradient(
+        145deg,
+        #0d1b30,
+        #081322
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    box-shadow: 0 10px 35px #02081435;
+}
+
+/* VİDEO ALANI */
+
+.video-container {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+    border-radius: 11px;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #14233b 0%,
+            #080f1c 70%
+        );
+
+    border: 1px solid #203c5e;
+
+    box-shadow:
+        0 8px 30px #02081440,
+        0 0 25px #168cff08;
+}
+
+/* HTML VIDEO */
+
+.video-container video {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    background: #050a13;
+}
+
+/* ODAK GÖRÜNÜMÜ */
+
+.result-item:focus-visible,
+.search-box button:focus-visible {
+    outline: 2px solid #42b5ff;
+    outline-offset: 3px;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+    .container {
+        grid-template-columns: 310px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .left-panel {
+        padding: 14px;
+    }
+
+    .result-item {
+        gap: 10px;
+        padding: 9px 7px;
+    }
+
+    .poster {
+        width: 56px;
+        height: 76px;
+    }
+}
+
+/* MOBİL */
+
+@media (max-width: 850px) {
+    body {
+        padding: 12px;
+    }
+
+    .container {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: auto;
+        gap: 14px;
+    }
+
+    .left-panel {
+        order: 1;
+    }
+
+    .right-panel {
+        order: 2;
+        min-height: auto;
+        padding: 8px;
+    }
+
+    .video-container {
+        width: 100%;
+    }
+}
+
+/* KÜÇÜK EKRANLAR */
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        gap: 10px;
+    }
+
+    .left-panel {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .right-panel {
+        padding: 5px;
+        border-radius: 12px;
+    }
+
+    .search-box {
+        margin-bottom: 18px;
+    }
+
+    .result-item {
+        padding: 9px 7px;
+    }
+
+    .poster {
+        width: 52px;
+        height: 70px;
+    }
+
+    .result-info h3 {
+        font-size: 13px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SOL: ARAMA VE SONUÇLAR -->
+    <aside class="left-panel">
+
+        <form class="search-box">
+            <input
+                type="text"
+                placeholder="İçerik ara..."
+                aria-label="İçerik ara"
+            >
+            <button type="submit" aria-label="Ara">⌕</button>
+        </form>
+
+        <div class="section-title">Arama Sonuçları</div>
+
+        <div class="results">
+
+            <div class="result-item active">
+                <div class="poster">▶</div>
+                <div class="result-info">
+                    <h3>Örnek İçerik 1</h3>
+                    <p>Video · 2026</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="result-item">
+                <div class="poster">✦</div>
+                <div class="result-info">
+                    <h3>Örnek İçerik 2</h3>
+                    <p>Video · 2025</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="result-item">
+                <div class="poster">◈</div>
+                <div class="result-info">
+                    <h3>Örnek İçerik 3</h3>
+                    <p>Video · 2024</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- SAĞ: YALNIZCA VİDEO -->
+    <main class="right-panel">
+
+        <div class="video-container">
+            <video controls></video>
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

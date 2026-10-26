@@ -3,11 +3,12 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	user-select: none;
+	list-style: none;
+	background: none;
+	outline: none;
 	border: none;
 	padding: 0;
 	margin: 0;
-	list-style: none;
-	outline: none;
 
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -10,7 +10,9 @@ window.onload = () => {
 
 
 function button_yt(id){
+  document.querySelector(".poster-card.active")?.classList.remove("active");
 	document.querySelector(".rt").innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+id+'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+  document.querySelector("#"+id).classList.add("active");
 }
 
 
@@ -40,7 +42,9 @@ function include(url) {
 	script.defer = true;
 	document.getElementsByTagName('head').item(0).appendChild(script);
 }
-//include("patch/script/kumanda.js");
+include("patch/script/ex_js.js");
+include("patch/script/yt_search.js");
+include("patch/script/html.js");
 
 window.onerror = function (message, src, line, col, err) {
  let hata = 

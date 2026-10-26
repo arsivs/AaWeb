@@ -29,7 +29,7 @@
 	gap: 30px;
 }
 .yt_content > div {
-	padding: 18px;
+	padding: 9px;
 	background: linear-gradient(145deg, #0e1d32, #091526);
 	border: 1px solid var(--border);
 	border-radius: 12px;
@@ -38,9 +38,12 @@
 .yt_content .lt {
 	display: flex;
 	flex-direction: column;
+	flex-shrink: 0;
 	flex-basis: 440px;
 	color: #fff;
-	gap: 10px 0;
+}
+.yt_content .form {
+	padding: 9px;
 }
 .yt_content .lt form {
 	display: flex;
@@ -80,13 +83,21 @@
 	padding-bottom: 4px;
 }
 
+.results {
+	display: flex;
+	flex-direction: column;
+	gap: 10px 0;
+	padding: 0 9px;
+	overflow: auto;
+}
 .poster-card {
 	display: flex;
 	flex-direction: row;
 	padding: 5px;
 	gap: 7px;
 	cursor: pointer;
-	transition: background .22s ease, border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+	border-color: #244b73;
+	background: linear-gradient(110deg, #112b48, #0d2037);
 }
 .poster-card.active {
 	background: linear-gradient(110deg, #12375c, #0d2340);
@@ -94,8 +105,6 @@
 	box-shadow: inset 3px 0 0 #168cff, 0 4px 18px #07101f30;
 }
 .poster-card:hover {
-	background: linear-gradient(110deg, #112b48, #0d2037);
-	border-color: #244b73;
 	transform: translateY(-1px);
 }
 .poster-card .image {
@@ -145,6 +154,7 @@
 	flex-grow: 1;
 	align-content: center;
 	text-align: center;
+	padding: 18px;
 }
 .yt_content .rt p {
 	padding: 20px 28px;
@@ -166,6 +176,7 @@
 
 <div class="yt_content">
 	<div class="lt">
+		<div class="form">
 		<form action='javascript:yt_search();' method='get'>
 			<button type="button" onclick="startVoice();">
 				<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -184,24 +195,8 @@
 			<input id='text' placeholder='Hadi aramaya başlayalım..!' type='text' autocomplete='off' value=''/>
 			<button type='submit'>⌕</button>
 		</form>
-
-		<div class="poster-card active" onclick="button_yt('OUWF_ZVll94');">
-			<div class="image"><img src="https://i.ytimg.com/vi/OUWF_ZVll94/mqdefault.jpg"></div>
-			<div class="info">
-				<h3>TARKAN - Kayıp (Official Music Video)</h3>
-				<p>10 Mn görüntüleme • 6 yıl önce</p>
-			</div>
-			<div class="duration">24:35</div>
 		</div>
-
-		<div class="poster-card" onclick="button_yt('J05H4PoT-P8');">
-			<div class="image"><img src="https://i.ytimg.com/vi/iSxhp49FbBk/mqdefault.jpg"></div>
-			<div class="info">
-				<h3>Tarkan - Kuzu Kuzu</h3>
-				<p>10 Mn görüntüleme • 6 yıl önce</p>
-			</div>
-			<div class="duration">4:35</div>
-		</div>
+		<div class="results"></div>
 	</div>
 
 

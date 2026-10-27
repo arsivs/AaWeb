@@ -171,11 +171,25 @@
 <script type="application/javascript">
 function testVoice() {
   const input = document.getElementById('text');
-msg("war",
-  "SpeechRecognition: " + !!window.SpeechRecognition +
-  "\nwebkitSpeechRecognition: " + !!window.webkitSpeechRecognition +
-  "\nSecure context: " + window.isSecureContext
-);
+
+
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const r = new SR();
+
+    r.lang = "tr-TR";
+
+    r.onstart = () => msg("war", "Mikrofon dinlemeye başladı.");
+    r.onresult = e => msg("war", "Algılanan: " + e.results[0][0].transcript);
+    r.onerror = e => msg("war", "Ses tanıma hatası: " + e.error);
+    r.onend = () => msg("war", "Dinleme sona erdi.");
+
+    try {
+        r.start();
+    } catch (e) {
+        msg("war", "Başlatma hatası: " + e.message);
+    }
+
+
 return;
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;

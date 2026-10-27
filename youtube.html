@@ -7,8 +7,6 @@
 <link rel="stylesheet" href="patch/styles/style.css">
 <script src="patch/script/js.js" type="text/javascript" defer="defer"></script>
 <style type="text/css">
-.fs-btn { display:none; }
-
 :root {
     --bg: #07101f;
     --panel: #0c192c;
@@ -180,7 +178,7 @@ function testVoice() {
     voice.lang = 'tr-TR';
     voice.start();
   } else {
-    console.log('Tarayıcı ses tanımayı desteklemiyor.');
+    msg("err", "Tarayıcı ses tanımayı desteklemiyor.");
   }
 }
 </script>
@@ -220,6 +218,6 @@ function testVoice() {
 </div>
 
 
-<button class="fs-btn" onclick="document.documentElement.requestFullscreen?.() || document.documentElement.webkitRequestFullscreen?.()">Tam Ekran Yap</button>
+<div class="notice"></div>
 </body>
 </html>

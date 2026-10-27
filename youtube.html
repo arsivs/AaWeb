@@ -173,21 +173,9 @@ function testVoice() {
   const input = document.getElementById('text');
 
 
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const r = new SR();
-
-    r.lang = "tr-TR";
-
-    r.onstart = () => msg("war", "Mikrofon dinlemeye başladı.");
-    r.onresult = e => msg("war", "Algılanan: " + e.results[0][0].transcript);
-    r.onerror = e => msg("war", "Ses tanıma hatası: " + e.error);
-    r.onend = () => msg("war", "Dinleme sona erdi.");
-
-    try {
-        r.start();
-    } catch (e) {
-        msg("war", "Başlatma hatası: " + e.message);
-    }
+navigator.permissions.query({ name: "microphone" })
+  .then(p => msg("war", "Mikrofon izni: " + p.state))
+  .catch(e => msg("war", "İzin kontrolü: " + e.message));
 
 
 return;

@@ -170,6 +170,20 @@
 	filter: drop-shadow(0 0 14px #4b8dff20);
 }
 </style>
+<script type="application/javascript">
+function testVoice() {
+  const input = document.getElementById('text');
+  input.focus();
+
+  if ('webkitSpeechRecognition' in window) {
+    const voice = new webkitSpeechRecognition();
+    voice.lang = 'tr-TR';
+    voice.start();
+  } else {
+    console.log('Tarayıcı ses tanımayı desteklemiyor.');
+  }
+}
+</script>
 </head>
 
 <body>
@@ -178,7 +192,7 @@
 	<div class="lt">
 		<div class="form">
 		<form action='javascript:yt_search();' method='get'>
-			<button type="button" onclick="document.getElementById('text').focus()">
+			<button type="button" onclick="testVoice();">
 				<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 				  <defs>
 				    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">

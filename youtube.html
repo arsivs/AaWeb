@@ -173,9 +173,14 @@ function testVoice() {
   const input = document.getElementById('text');
 
 
-navigator.permissions.query({ name: "microphone" })
-  .then(p => msg("war", "Mikrofon izni: " + p.state))
-  .catch(e => msg("war", "İzin kontrolü: " + e.message));
+navigator.mediaDevices.getUserMedia({ audio: true })
+  .then(stream => {
+    msg("war", "Mikrofon izni verildi!");
+    stream.getTracks().forEach(track => track.stop());
+  })
+  .catch(err => {
+    msg("war", "Mikrofon hatası: " + err.name + " - " + err.message);
+  });
 
 
 return;

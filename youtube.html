@@ -171,7 +171,12 @@
 <script type="application/javascript">
 function testVoice() {
   const input = document.getElementById('text');
-
+msg("war",
+  "SpeechRecognition: " + !!window.SpeechRecognition +
+  "\nwebkitSpeechRecognition: " + !!window.webkitSpeechRecognition +
+  "\nSecure context: " + window.isSecureContext
+);
+return;
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
 

@@ -171,15 +171,40 @@
 <script type="application/javascript">
 function testVoice() {
   const input = document.getElementById('text');
-  input.focus();
 
-  if ('webkitSpeechRecognition' in window) {
-    const voice = new webkitSpeechRecognition();
-    voice.lang = 'tr-TR';
-    voice.start();
-  } else {
-    msg("err", "Tarayıcı ses tanımayı desteklemiyor.");
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    msg("err", "Ses tanıma desteklenmiyor.");
+    return;
   }
+
+  const voice = new SpeechRecognition();
+  voice.lang = 'tr-TR';
+  voice.interimResults = true;
+  voice.continuous = false;
+
+  msg("ok", "Dinleniyor.");
+
+  voice.onresult = function(event) {
+  	msg("ok", "Konuşma algılandı.");
+    input.value = Array.from(event.results)
+      .map(result => result[0].transcript)
+      .join('');
+  };
+
+  voice.onerror = function(event) {
+    msg("err", event.error);
+  };
+
+  voice.onend = function() {
+    if (input.value === "") {
+      msg("err", "Dinleme sona erdi, sonuç alınamadı.");
+    }
+  };
+
+  voice.start();
 }
 </script>
 </head>

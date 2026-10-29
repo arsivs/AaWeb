@@ -205,15 +205,22 @@ navigator.mediaDevices.getUserMedia({ audio: true })
       .join('');
   };
 
-  voice.onerror = function(event) {
-    msg("err", event.error);
-  };
+	voice.onerror = function(event) {
+	    msg("err", "Ses tanıma hatası: " + event.error);
+	    console.log("SpeechRecognition error:", event.error);
+	};
 
-  voice.onend = function() {
-    if (input.value === "") {
-      msg("err", "Dinleme sona erdi, sonuç alınamadı.");
-    }
-  };
+	voice.onend = function() {
+	    msg("war", "Dinleme bitti. Değer: " + input.value);
+	};
+
+	voice.onstart = function() {
+	    msg("ok", "Ses tanıma gerçekten başladı.");
+	};
+
+	voice.onspeechstart = function() {
+	    msg("ok", "Konuşma sesi algılandı.");
+	};
 
   voice.start();
 }

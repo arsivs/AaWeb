@@ -170,59 +170,29 @@
 </style>
 <script type="application/javascript">
 function testVoice() {
-  const input = document.getElementById('text');
+    const input = document.getElementById('text');
 
+    if (!window.NativeSpeech ||
+        typeof window.NativeSpeech.startListening !== 'function') {
+        msg("err", "Android ses tanıma köprüsü bulunamadı.");
+        return;
+    }
 
-navigator.mediaDevices.getUserMedia({ audio: true })
-  .then(stream => {
-    msg("war", "Mikrofon izni verildi!");
-    stream.getTracks().forEach(track => track.stop());
-  })
-  .catch(err => {
-    msg("war", "Mikrofon hatası: " + err.name + " - " + err.message);
-  });
+    window.onNativeSpeechResult = function(text) {
+        if (text.startsWith("Ses tanıma hatası:")) {
+            msg("err", text);
+            return;
+        }
 
+        if (input && text) {
+            input.value = text;
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            msg("ok", "Konuşma algılandı: " + text);
+        }
+    };
 
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  if (!SpeechRecognition) {
-    msg("err", "Ses tanıma desteklenmiyor.");
-    return;
-  }
-
-  const voice = new SpeechRecognition();
-  voice.lang = 'tr-TR';
-  voice.interimResults = true;
-  voice.continuous = false;
-
-  msg("ok", "Dinleniyor.");
-
-  voice.onresult = function(event) {
-  	msg("ok", "Konuşma algılandı.");
-    input.value = Array.from(event.results)
-      .map(result => result[0].transcript)
-      .join('');
-  };
-
-	voice.onerror = function(event) {
-	    msg("err", "Ses tanıma hatası: " + event.error);
-	    console.log("SpeechRecognition error:", event.error);
-	};
-
-	voice.onend = function() {
-	    msg("war", "Dinleme bitti. Değer: " + input.value);
-	};
-
-	voice.onstart = function() {
-	    msg("ok", "Ses tanıma gerçekten başladı.");
-	};
-
-	voice.onspeechstart = function() {
-	    msg("ok", "Konuşma sesi algılandı.");
-	};
-
-  voice.start();
+    msg("ok", "Dinleniyor...");
+    window.NativeSpeech.startListening();
 }
 </script>
 </head>

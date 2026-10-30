@@ -217,7 +217,7 @@ function testVoice() {
 				  </g>
 				</svg>
 			</button>
-			<input id="text" placeholder="Hadi aramaya başlayalım..!" type="text" autocomplete="off" value=""/>
+			<input id="text" placeholder="Hadi aramaya başlayalım..!" type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" onblur="if (window.CarKeyboard) CarKeyboard.stopKeyboard();" value=""/>
 			<button type="submit">⌕</button>
 		</form>
 		</div>

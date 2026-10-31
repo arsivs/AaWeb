@@ -194,6 +194,31 @@ function testVoice() {
     msg("ok", "Dinleniyor...");
     window.NativeSpeech.startListening();
 }
+
+
+window.addEventListener("autoxkey", function(event) {
+    const keyCode = event.detail.keyCode;
+
+    //msg("ok", "AutoX tuş kodu: " + keyCode);
+
+    switch (keyCode) {
+        case 87:
+            msg("ok", "Sonraki");
+            break;
+
+        case 88:
+            msg("ok", "Önceki");
+            break;
+
+        case 85:
+            msg("ok", "Oynat / Duraklat");
+            break;
+
+        default:
+            msg("ok", "Diğer tuş:" + keyCode);
+            break;
+    }
+});
 </script>
 </head>
 

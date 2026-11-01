@@ -229,6 +229,10 @@ window.addEventListener("autoxkey", function(event) {
             break;
     }
 });
+window.addEventListener('autoxseek', function (e) {
+	msg("ok", "Pozisyon:" + e.detail.position);
+	//player.seekTo(e.detail.position, true);
+});
 
 function sendToCar(track) {
   if (window.AutoXMedia) {
@@ -273,13 +277,15 @@ function sendToCar(track) {
 
 <script>
 // Şarkı değişince:
-function deneme(){
-	sendToCar({
-	  name: 'Tarkan',
-	  desc: 'Kuzu Kuzu',
-	  image: 'https://i.ytimg.com/vi/_GOZDXq7I-I/mqdefault.jpg',
-	  playing: true
-	});
+function deneme() {
+  sendToCar({
+    name: 'Tarkan',
+    desc: 'Kuzu Kuzu',
+    image: 'https://i.ytimg.com/vi/_GOZDXq7I-I/mqdefault.jpg',
+    duration: 215,   // saniye. YouTube kullanıyorsanız: player.getDuration()
+    position: 0,
+    playing: true
+  });
 }
 </script>
 

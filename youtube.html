@@ -213,7 +213,12 @@ window.addEventListener("autoxkey", function(event) {
             break;
 
         case 126:
-            msg("ok", "Oynat / Duraklat");
+            msg("ok", "Oynat");
+            AutoXMedia.setPlaying(true);  // oynat simgesi
+            break;
+
+        case 127:
+            msg("ok", "Duraklat");
             AutoXMedia.setPlaying(false);  // oynat simgesi
             break;
 

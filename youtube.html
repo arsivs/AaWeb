@@ -208,17 +208,26 @@ window.addEventListener("autoxkey", function(event) {
 
         case 88:
             msg("ok", "Önceki");
+            AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
             break;
 
-        case 85:
+        case 126:
             msg("ok", "Oynat / Duraklat");
+            AutoXMedia.setPlaying(false);  // oynat simgesi
             break;
 
         default:
             msg("ok", "Diğer tuş:" + keyCode);
+            AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
             break;
     }
 });
+
+function sendToCar(track) {
+  if (window.AutoXMedia) {
+    AutoXMedia.setNowPlaying(JSON.stringify(track));
+  }
+}
 </script>
 </head>
 
@@ -255,6 +264,15 @@ window.addEventListener("autoxkey", function(event) {
 	</div>
 </div>
 
+<script>
+// Şarkı değişince:
+sendToCar({
+  name: 'Tarkan',
+  desc: 'Kuzu Kuzu',
+  image: 'https://i.ytimg.com/vi/_GOZDXq7I-I/mqdefault.jpg',
+  playing: true
+});
+</script>
 
 <div class="notice"></div>
 </body>

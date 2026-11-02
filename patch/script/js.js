@@ -43,7 +43,7 @@ function sendToCar(id) {
       image: `https://i.ytimg.com/vi/${id}/mqdefault.jpg`,
       duration: select.querySelector("p").dataset.time,
       position: 0,
-      playing: true
+      playing: false // otomatik oynat: true
     }
     AutoXMedia.setNowPlaying(JSON.stringify(track));
   }

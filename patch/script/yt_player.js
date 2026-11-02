@@ -47,13 +47,13 @@ const yt = {
 					// İlk video otomatik başlamazsa başlat
 					if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
 						event.target.playVideo();
+						sendToCar(id)
 					}
 				},
 				onStateChange: (event) => {
 					// Video oynatmaya başladı
 					if (event.data === YT.PlayerState.PLAYING) {
-						sendToCar(id)
-						console.log("OYnatma başladı");
+						window.AutoXMedia?.setPlaying(true); // Araçda başlat
 					}
 				},
 				onApiChange: (event) => {

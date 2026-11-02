@@ -7,7 +7,7 @@ window.onload = () => {
 function button_yt(id){
   document.querySelector(".poster-card.active")?.classList.remove("active");
   yt.init(id);
-  document.querySelector("#"+id).classList.add("active");
+  document.querySelector(`[data-id="${id}"]`).classList.add("active");
 }
 
 function startVoice() {
@@ -24,7 +24,7 @@ function onYouTubeIframeAPIReady() {
 
 const yt = {
   init(id) {
-    if (!ytReady) return console.warn('YouTube API henüz hazır değil');
+    if (!ytReady) return msg("err","YouTube API henüz hazır değil");
 
     if (player) return player.loadVideoById(id);
 
@@ -37,10 +37,18 @@ const yt = {
           playsinline: 1,
           controls: 0,
           disablekb: 1,
-          fs: 1,
+          loop: 0,
+          fs: 0,
           iv_load_policy: 3,
           cc_load_policy: 0,
           rel: 0
+      },
+      events: {
+          onApiChange: (event) => {
+              if (event.target.getOptions().includes('captions')) {
+                  event.target.unloadModule('captions');
+              }
+          }
       }
     });
   },

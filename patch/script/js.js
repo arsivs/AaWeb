@@ -22,9 +22,20 @@ function onYouTubeIframeAPIReady() {
     ytReady = true;
 }
 
+
+let player, ytReady = false;
+
+function onYouTubeIframeAPIReady() {
+    ytReady = true;
+}
+
 const yt = {
+  history: [],
+  index: -1,
+
   init(id) {
-    if (!ytReady) return msg("err","YouTube API henüz hazır değil");
+    if (!ytReady) return msg("err", "YouTube API henüz hazır değil");
+    if (!id) return;
 
     if (player) return player.loadVideoById(id);
 
@@ -53,10 +64,43 @@ const yt = {
     });
   },
 
+  // Video listesini ayarla ve seçilen videoyu başlat
+  setList(ids, startIndex = 0) {
+    if (!ytReady) return msg("err", "YouTube API henüz hazır değil");
+    if (!Array.isArray(ids) || !ids.length) return;
+
+    this.history = [...ids];
+    this.index = Math.max(0, Math.min(
+        Math.trunc(startIndex) || 0,
+        ids.length - 1
+    ));
+
+    this.init(this.history[this.index]);
+  },
+
+  // Sonraki video
+  next() {
+    if (this.index >= this.history.length - 1) return;
+
+    this.index++;
+    this.init(this.history[this.index]);
+  },
+
+  // Önceki video
+  prev() {
+    if (this.index <= 0) return;
+
+    this.index--;
+    this.init(this.history[this.index]);
+  },
+
   toggle: () => {
     if (!player) return;
-    player.getPlayerState() === YT.PlayerState.PLAYING ? player.pauseVideo() : player.playVideo();
+    player.getPlayerState() === YT.PlayerState.PLAYING
+        ? player.pauseVideo()
+        : player.playVideo();
   },
+
   play: () => player?.playVideo(),
   pause: () => player?.pauseVideo(),
   seek: s => player?.seekTo(s, true),
@@ -66,9 +110,7 @@ const yt = {
   mute: () => player?.mute(),
   unmute: () => player?.unMute(),
   time: () => player?.getCurrentTime() ?? 0,
-  duration: () => player?.getDuration() ?? 0,
-  next: () => player?.nextVideo(),
-  prev: () => player?.previousVideo()
+  duration: () => player?.getDuration() ?? 0
 };
 
 function include(url) {

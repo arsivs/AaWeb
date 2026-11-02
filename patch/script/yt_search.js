@@ -24,13 +24,15 @@ yt_search = function(id = null) {
 	if(text != ""){
 		getJSON("https://www.googleapis.com/youtube/v3/search?", params, function(err, data) {
 			if (err === null) {
-				if(id !== null)
-					data.items.unshift({"id": {videoId: id}});
-				yt_videos( data.items.map(function(i){ return i.id.videoId; }).join(",") );
+				if (id !== null)
+					data.items.unshift({id: {videoId: id}});
+				const videos = data.items.map(i => i.id.videoId).filter(Boolean);
+				yt_videos(videos.join(","));
+				yt.setList(videos);
 			}
 		});
 	}else{
-		msg("En az 3 karakter girin!", "warning");
+		msg("war", "En az 3 karakter girin!");
 	}
 }
 

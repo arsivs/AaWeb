@@ -62,9 +62,7 @@ const yt = {
 	// Listeyi kaydet, otomatik oynatma
 	setList(ids, startIndex = 0) {
 		if (!Array.isArray(ids)) return;
-
 		this.history = ids.filter(Boolean);
-
 		if (!this.history.length) {
 			this.index = -1;
 			return;
@@ -72,33 +70,26 @@ const yt = {
 
 		// Oynatılan video yeni listede varsa konumunu koru
 		const currentIndex = this.history.indexOf(this.currentId);
-
 		this.index = currentIndex !== -1
 			? currentIndex
 			: -1;
 	},
-
-	// Sonraki video
-	next() {
-		if (this.index < 0 || this.index >= this.history.length - 1) return;
-
-		this.init(this.history[this.index + 1]);
-	},
-
-	// Önceki video
-	prev() {
-		if (this.index <= 0) return;
-
-		this.init(this.history[this.index - 1]);
-	},
-
 	// Duraklat / Oynat
 	toggle: () => {
 		if (!player) return;
-
 		player.getPlayerState() === YT.PlayerState.PLAYING
 			? player.pauseVideo()
 			: player.playVideo();
+	},
+	// Sonraki video
+	next() {
+		if (this.index >= this.history.length - 1) return;
+		this.init(this.history[this.index < 0 ? 0 : this.index + 1]);
+	},
+	// Önceki video
+	prev() {
+		if (this.index <= 0) return;
+		this.init(this.history[this.index - 1]);
 	},
 
 	play: () => player?.playVideo(),

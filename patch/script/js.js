@@ -37,9 +37,6 @@ function videoStateChanged(event) {
     }
 }
 
-let videoStartTime = 0;
-let videoWaiting = false;
-
 function videoStateChanged(event) {
     const states = {
         [-1]: 'UNSTARTED',

@@ -33,13 +33,19 @@ const yt = {
       width: '100%',
       height: '100%',
       videoId: id,
-      playerVars: { playsinline: 1 }
+      playerVars: {
+          playsinline: 1,
+          autoplay: 1
+      }
     });
   },
 
+  toggle: () => {
+    if (!player) return;
+    player.getPlayerState() === YT.PlayerState.PLAYING ? player.pauseVideo() : player.playVideo();
+  },
   play: () => player?.playVideo(),
   pause: () => player?.pauseVideo(),
-  toggle: () => player?.getPlayerState() === 1 ? player.pauseVideo() : player?.playVideo(),
   seek: s => player?.seekTo(s, true),
   forward: () => player?.seekTo(player.getCurrentTime() + 10, true),
   back: () => player?.seekTo(player.getCurrentTime() - 10, true),
@@ -47,7 +53,9 @@ const yt = {
   mute: () => player?.mute(),
   unmute: () => player?.unMute(),
   time: () => player?.getCurrentTime() ?? 0,
-  duration: () => player?.getDuration() ?? 0
+  duration: () => player?.getDuration() ?? 0,
+  next: () => player?.nextVideo(),
+  prev: () => player?.previousVideo()
 };
 
 function include(url) {

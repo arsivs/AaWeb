@@ -29,6 +29,9 @@ const yt = {
     if (!ytReady) return msg("err", "YouTube API henüz hazır değil");
     if (!id) return;
 
+    $(".poster-card.active")?.classList.remove("active");
+    $(`[data-id="${id}"]`).classList.add("active");
+
     if (player) return player.loadVideoById(id);
 
     player = new YT.Player('player', {
@@ -54,8 +57,6 @@ const yt = {
           }
       }
     });
-    $(".poster-card.active")?.classList.remove("active");
-    $(`[data-id="${id}"]`).classList.add("active");
   },
 
   // Video listesini ayarla ve seçilen videoyu başlat

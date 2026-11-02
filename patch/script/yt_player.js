@@ -53,6 +53,7 @@ const yt = {
 					// Video oynatmaya başladı
 					if (event.data === YT.PlayerState.PLAYING) {
 						sendToCar(id)
+						console.log("OYnatma başladı");
 					}
 				},
 				onApiChange: (event) => {

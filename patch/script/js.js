@@ -37,6 +37,30 @@ function videoStateChanged(event) {
     }
 }
 
+let videoStartTime = 0;
+let videoWaiting = false;
+
+function videoStateChanged(event) {
+    const states = {
+        [-1]: 'UNSTARTED',
+        [0]: 'ENDED',
+        [1]: 'PLAYING',
+        [2]: 'PAUSED',
+        [3]: 'BUFFERING',
+        [5]: 'CUED'
+    };
+
+    const ms = performance.now() - videoStartTime;
+
+    console.log(
+        `[AutoX-YT] ${states[event.data] ?? event.data}: ${ms.toFixed(0)} ms`
+    );
+
+    if (event.data === YT.PlayerState.PLAYING && videoWaiting) {
+        console.log(`[AutoX-YT] Video açılma süresi: ${ms.toFixed(0)} ms`);
+        videoWaiting = false;
+    }
+}
 const yt = {
     init(id) {
         if (!ytReady) {

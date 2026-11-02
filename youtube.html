@@ -36,13 +36,17 @@ window.addEventListener("autoxkey", function(event) {
             msg("ok", "Önceki");
             //AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
             break;
-
+        /*
         case 126:
+            if (!ytReady) break;
+            yt.toggle();
             msg("ok", "Oynat");
             AutoXMedia.setPlaying(true);  // oynat simgesi
             break;
-
+        */
         case 127:
+            if (!ytReady) break;
+            yt.toggle();
             msg("ok", "Duraklat");
             AutoXMedia.setPlaying(false);  // oynat simgesi
             break;
@@ -54,16 +58,8 @@ window.addEventListener("autoxkey", function(event) {
             break;
     }
 });
-window.addEventListener('autoxseek', function (e) {
-	msg("ok", "Pozisyon:" + e.detail.position);
-	//player.seekTo(e.detail.position, true);
-});
 
-function sendToCar(track) {
-  if (window.AutoXMedia) {
-    AutoXMedia.setNowPlaying(JSON.stringify(track));
-  }
-}
+
 
 </script>
 </head>
@@ -87,20 +83,6 @@ function sendToCar(track) {
 		<div id="player"><p>Zihninde çalan o melodiyi, içinden mırıldandığın o ilk şarkıyı buraya bırak; ritmi başlatalım...</p></div>
 	</div>
 </div>
-
-<script>
-// Şarkı değişince:
-function deneme() {
-  sendToCar({
-    name: 'Tarkan',
-    desc: 'Kuzu Kuzu',
-    image: 'https://i.ytimg.com/vi/_GOZDXq7I-I/mqdefault.jpg',
-    duration: 215,   // saniye. YouTube kullanıyorsanız: player.getDuration()
-    position: 0,
-    playing: true
-  });
-}
-</script>
 
 <div class="notice"></div>
 </body>

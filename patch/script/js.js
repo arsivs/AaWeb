@@ -1,3 +1,4 @@
+const $ = s => document.querySelector(s);
 let player, ytReady = false;
 
 window.onload = () => {
@@ -5,15 +6,13 @@ window.onload = () => {
 };
 
 function button_yt(id){
-  document.querySelector(".poster-card.active")?.classList.remove("active");
   yt.init(id);
-  document.querySelector(`[data-id="${id}"]`).classList.add("active");
 }
 
 function startVoice() {
   const r = new webkitSpeechRecognition();
   r.lang = "tr-TR";
-  r.onresult = e => document.querySelector("#text").value =
+  r.onresult = e => $("#text").value =
     e.results[0][0].transcript;
   r.start();
 }
@@ -55,6 +54,8 @@ const yt = {
           }
       }
     });
+    $(".poster-card.active")?.classList.remove("active");
+    $(`[data-id="${id}"]`).classList.add("active");
   },
 
   // Video listesini ayarla ve seçilen videoyu başlat
@@ -67,8 +68,8 @@ const yt = {
         Math.trunc(startIndex) || 0,
         ids.length - 1
     ));
-
-    this.init(this.history[this.index]);
+    // İLk videoyu başlat
+    //this.init(this.history[this.index]);
   },
 
   // Sonraki video

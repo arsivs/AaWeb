@@ -1,7 +1,7 @@
 const $ = s => document.querySelector(s);
 
 window.onload = () => {
-  include("patch/script/yt_player.js");
+
 };
 
 function button_yt(id){
@@ -38,11 +38,12 @@ function include(url) {
 	var script  = document.createElement('script');
 	script.src  = url;
 	script.type = 'text/javascript';
-	script.defer = true;
+	//script.defer = true;
 	$("head").appendChild(script);
 }
 include("patch/script/ex_js.js");
 include("patch/script/yt_search.js");
+include("patch/script/yt_player.js");
 include("patch/script/html.js");
 
 window.onerror = function (message, src, line, col, err) {

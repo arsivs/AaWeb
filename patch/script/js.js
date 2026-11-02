@@ -29,8 +29,12 @@ const yt = {
     if (!ytReady) return msg("err", "YouTube API henüz hazır değil");
     if (!id) return;
 
+    // Açılan videonun listedeki konumunu bul
+    const index = this.history.indexOf(id);
+    if (index !== -1) this.index = index;
+
     $(".poster-card.active")?.classList.remove("active");
-    $(`[data-id="${id}"]`).classList.add("active");
+    $(`[data-id="${id}"]`)?.classList.add("active");
 
     if (player) return player.loadVideoById(id);
 

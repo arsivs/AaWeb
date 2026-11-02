@@ -22,13 +22,6 @@ function onYouTubeIframeAPIReady() {
     ytReady = true;
 }
 
-
-let player, ytReady = false;
-
-function onYouTubeIframeAPIReady() {
-    ytReady = true;
-}
-
 const yt = {
   history: [],
   index: -1,

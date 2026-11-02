@@ -20,47 +20,22 @@
 }
 </style>
 <script type="application/javascript">
-function testVoice() {
-    const input = document.getElementById('text');
-
-    if (!window.NativeSpeech ||
-        typeof window.NativeSpeech.startListening !== 'function') {
-        msg("err", "Android ses tanıma köprüsü bulunamadı.");
-        return;
-    }
-
-    window.onNativeSpeechResult = function(text) {
-        if (text.startsWith("Ses tanıma hatası:")) {
-            msg("err", text);
-            return;
-        }
-
-        if (input && text) {
-            input.value = text;
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-            msg("ok", "Konuşma algılandı: " + text);
-        }
-    };
-
-    msg("ok", "Dinleniyor...");
-    window.NativeSpeech.startListening();
-}
-
 
 window.addEventListener("autoxkey", function(event) {
     const keyCode = event.detail.keyCode;
-
-    //msg("ok", "AutoX tuş kodu: " + keyCode);
-
     switch (keyCode) {
         case 87:
-        	deneme();
+            if (!ytReady) break;
+        	//deneme();
+            yt.prev();
             msg("ok", "Sonraki");
             break;
 
         case 88:
+            if (!ytReady) break;
+            yt.prev();
             msg("ok", "Önceki");
-            AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
+            //AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
             break;
 
         case 126:
@@ -100,7 +75,7 @@ function sendToCar(track) {
 	<div class="lt">
 		<div class="form">
 		<form action="javascript:yt_search();" method="get">
-			<button type="button" onclick="testVoice();">
+			<button type="button" onclick="startVoice();">
 				<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 				  <defs>
 				    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">

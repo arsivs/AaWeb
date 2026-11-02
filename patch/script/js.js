@@ -38,8 +38,8 @@ function sendToCar(id) {
   if (window.AutoXMedia) {
     let select = $(`[data-id="${id}"]`);
     let track = {
-      name: select.querySelector("h3"),
-      desc: select.querySelector("p"),
+      name: select.querySelector("h3").innerText,
+      desc: select.querySelector("p").innerText,
       image: `https://i.ytimg.com/vi/${id}/mqdefault.jpg`,
       duration: select.querySelector("p").dataset.time,
       position: 0,

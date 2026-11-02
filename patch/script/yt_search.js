@@ -14,14 +14,15 @@ yt_search = function(id = null) {
 		key: selectKEYS()
 	};
 	if(id == null){
-		var text = document.getElementById("text").value;
+		var text = $("#text").value;
 		params.q = text;
-		params.maxResults = "50";
+		params.maxResults = "15";
 	}else {
 		params.relatedToVideoId = id;
-		params.maxResults = "49";
+		params.maxResults = "14";
 	}
 	if(text != ""){
+		$(".icon-search").className = "icon-spin";
 		getJSON("https://www.googleapis.com/youtube/v3/search?", params, function(err, data) {
 			if (err === null) {
 				if (id !== null)
@@ -30,6 +31,7 @@ yt_search = function(id = null) {
 				yt_videos(videos.join(","));
 				yt.setList(videos);
 			}
+			$(".icon-spin").className = "icon-search";
 		});
 	}else{
 		msg("war", "En az 3 karakter girin!");
@@ -45,7 +47,7 @@ function yt_videos(ids){
 	};
 	getJSON("https://www.googleapis.com/youtube/v3/videos?", params, function(err, data) {
 		if (err === null) {
-			var res, results = document.querySelector(".results");
+			var res, results = $(".results");
 			results.innerHTML = "";
 			data.items.forEach(function(item) {
 				var	time = item.contentDetails.duration.match(/[0-9]+/g);

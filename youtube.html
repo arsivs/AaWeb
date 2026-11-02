@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AutoX Andorid Auto</title>
-<link rel="stylesheet" href="patch/styles/style.css">
+<link rel="stylesheet" href="patch/styles/config.css">
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="patch/script/js.js" type="text/javascript" defer="defer"></script>
 <style type="text/css">
@@ -75,22 +75,9 @@ function sendToCar(track) {
 	<div class="lt">
 		<div class="form">
 		<form action="javascript:yt_search();" method="get">
-			<button type="button" onclick="startVoice();">
-				<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-				  <defs>
-				    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-				      <stop stop-color="#97e0ff"/>
-				      <stop offset="1" stop-color="#1075ff"/>
-				    </linearGradient>
-				  </defs>
-				  <g fill="url(#g)">
-				    <path d="M50 67.813A17.813 17.813 0 0 0 67.813 50V20.313a17.813 17.813 0 0 0-35.626 0V50A17.813 17.813 0 0 0 50 67.813Z"/>
-				    <path d="M73.75 41.094V50a23.75 23.75 0 0 1-47.5 0v-8.906a2.969 2.969 0 0 0-5.938 0V50a29.69 29.69 0 0 0 26.72 29.54v9.054a2.969 2.969 0 0 1-2.97 2.969h-2.968a2.969 2.969 0 0 0 0 5.937h17.812a2.969 2.969 0 0 0 0-5.937h-2.968a2.969 2.969 0 0 1-2.97-2.97V79.54A29.69 29.69 0 0 0 79.688 50v-8.906a2.969 2.969 0 0 0-5.937 0Z"/>
-				  </g>
-				</svg>
-			</button>
+			<button type="button" onclick="startVoice();"><i class="icon-mic"></i></button>
 			<input id="text" placeholder="Hadi aramaya başlayalım..!" type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
-			<button type="submit">⌕</button>
+			<button type="submit"><i class="icon-search"></i></button>
 		</form>
 		</div>
 		<div class="results"></div>

@@ -3,7 +3,7 @@ function Search_Yaz(items) {
 			<div class="image"><img src="https://i.ytimg.com/vi/${items.id}/default.jpg"></div>
 			<div class="info">
 				<h3>${items.title}</h3>
-				<p>${items.popularity} • ${items.date}</p>
+				<p data-time="${items.duration_car}">${items.popularity} • ${items.date}</p>
 			</div>
 			<div class="duration">${items.duration}</div>
 		</div>`;

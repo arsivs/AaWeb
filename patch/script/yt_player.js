@@ -49,7 +49,12 @@ const yt = {
 						event.target.playVideo();
 					}
 				},
-
+				onStateChange: (event) => {
+					// Video oynatmaya başladı
+					if (event.data === YT.PlayerState.PLAYING) {
+						sendToCar(id)
+					}
+				},
 				onApiChange: (event) => {
 					if (event.target.getOptions().includes('captions')) {
 						event.target.unloadModule('captions');

@@ -34,6 +34,21 @@ function startVoice() {
   window.NativeSpeech.startListening();
 }
 
+function sendToCar(id) {
+  if (window.AutoXMedia) {
+    let select = $(`[data-id="${id}"]`);
+    let track = {
+      name: select.querySelector("h3"),
+      desc: select.querySelector("p"),
+      image: `https://i.ytimg.com/vi/${id}/mqdefault.jpg`,
+      duration: select.querySelector("p").dataset.time,
+      position: 0,
+      playing: true
+    }
+    AutoXMedia.setNowPlaying(JSON.stringify(track));
+  }
+}
+
 function include(url) {
 	var script  = document.createElement('script');
 	script.src  = url;

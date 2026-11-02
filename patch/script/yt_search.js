@@ -56,6 +56,7 @@ function yt_videos(ids){
 					id: item.id,
 					title: item.snippet.title, //url_slug(item.snippet.title, {delimiter:' ', lowercase: false, alphanumeric: false}), //item.snippet.title,
 					duration: time.join(":"),
+					duration_car: toSeconds(item.contentDetails.duration),
 					date: tarih(item.snippet.publishedAt),
 					popularity: views(item.statistics.viewCount)
 				};
@@ -63,6 +64,12 @@ function yt_videos(ids){
 			});
 		}
 	});
+}
+
+function toSeconds(duration) {
+    const [, h = 0, m = 0, s = 0] =
+        duration.match(/(?:PT)(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    return +h * 3600 + +m * 60 + +s;
 }
 
 function views(number) {

@@ -38,13 +38,14 @@ function include(url) {
 	var script  = document.createElement('script');
 	script.src  = url;
 	script.type = 'text/javascript';
-	//script.defer = true;
+	script.defer = true;
 	$("head").appendChild(script);
 }
 include("patch/script/ex_js.js");
 include("patch/script/yt_search.js");
 include("patch/script/yt_player.js");
 include("patch/script/html.js");
+include("https://www.youtube.com/iframe_api");
 
 window.onerror = function (message, src, line, col, err) {
  let hata = 

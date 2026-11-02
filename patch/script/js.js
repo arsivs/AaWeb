@@ -18,7 +18,6 @@ function startVoice() {
   r.start();
 }
 
-
 function onYouTubeIframeAPIReady() {
     ytReady = true;
 }
@@ -34,8 +33,14 @@ const yt = {
       height: '100%',
       videoId: id,
       playerVars: {
+          autoplay: 1,
           playsinline: 1,
-          autoplay: 1
+          controls: 0,
+          disablekb: 1,
+          fs: 1,
+          iv_load_policy: 3,
+          cc_load_policy: 0,
+          rel: 0
       }
     });
   },

@@ -101,7 +101,7 @@ const Ayarlar = {
 function msg(type, msg){
 	var sec = document.querySelector('.notice');
 	sec.style.display = "block";
-	sec.innerHTML = '<div class="msg '+type+'">'+msg+'</div>';
+	sec.innerHTML = '<div class="msg '+type+'"><p>'+msg+'</p></div>';
 	sec.querySelector('.msg').onanimationend = (e) => {
 		e.target.remove();
 		sec.style.display = "none";

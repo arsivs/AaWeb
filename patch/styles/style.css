@@ -6,19 +6,17 @@
 	padding: 30px;
 	gap: 30px;
 }
-.yt_content > div {
+.yt_content .lt,
+ .yt_content .rt {
 	padding: var(--bg-padding);
 	background: var(--panel);
 	border: 1px solid var(--bg-border);
 	border-radius: var(--bg-border-radius);
 	box-shadow: var(--panel-light);
 }
-.yt_content.set .lt,
-.yt_content.set .rt {
+.yt_content.set > .lt,
+.yt_content.set > .rt {
 	display: none;
-}
-.yt_content.set .settings{
-	display: block;
 }
 
 /* Sol Kisim Baslangic */
@@ -164,7 +162,13 @@
 
 /* Ayarlar Baslangic */
 .settings {
-	flex-grow: 1;
 	display: none;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 30px;
 }
+.yt_content.set .settings{
+	display: flex;
+}
+
 /* Ayarlar Bitis */

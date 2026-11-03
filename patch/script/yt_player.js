@@ -51,9 +51,22 @@ const yt = {
 					}
 				},
 				onStateChange: (event) => {
-					// Video oynatmaya başladı
-					if (event.data === YT.PlayerState.PLAYING) {
-						window.AutoXMedia?.setPlaying(true); // Araçda başlat
+					const state = event.data;
+
+					if (state === YT.PlayerState.PLAYING) {
+						window.AutoXMedia?.setPlaying(true);
+					}
+
+					if ([YT.PlayerState.PAUSED,
+					  YT.PlayerState.BUFFERING,
+					  YT.PlayerState.ENDED].includes(state)) {
+
+						window.AutoXMedia?.setPlaying(false);
+						window.AutoXMedia?.setPosition(event.target.getCurrentTime(), true);
+					}
+
+					if (state === YT.PlayerState.ENDED) {
+					    // yt.next();
 					}
 				},
 				onApiChange: (event) => {

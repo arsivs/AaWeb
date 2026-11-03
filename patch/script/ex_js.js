@@ -98,14 +98,20 @@ const Ayarlar = {
 // Ayarlar.remove("tema");  Ayarı sil
 /* Ayarlar LocalStorage End */
 
-function msg(type, msg){
-	var sec = document.querySelector('.notice');
-	sec.style.display = "block";
-	sec.innerHTML = '<div class="msg '+type+'"><p>'+msg+'</p></div>';
-	sec.querySelector('.msg').onanimationend = (e) => {
-		e.target.remove();
-		sec.style.display = "none";
-	};
+function msg(type, msg) {
+  const sec = document.querySelector('.notice');
+
+  sec.style.display = "none";
+  sec.innerHTML = '<div class="msg ' + type + '"><p>' + msg + '</p></div>';
+
+  void sec.offsetWidth; // Animasyonu yeniden başlat
+  sec.style.display = "block";
+
+  sec.onanimationend = (e) => {
+      if (e.target !== sec) return;
+      sec.style.display = "none";
+      sec.innerHTML = "";
+  };
 }
 
 // ononline version

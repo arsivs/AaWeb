@@ -14,20 +14,10 @@ function startVoice() {
 	if (typeof native?.startListening !== "function")
 		return msg("err", "Ses tanıma kullanılamıyor.");
 
-	if (startVoice.listening) return;
-	startVoice.listening = true;
-
-	window.onNativeSpeechResult = text => {
-		startVoice.listening = false;
-		if (typeof text !== "string") return;
-
-		text = text.trim();
-
-		if (text.startsWith("Ses tanıma hatası:"))
-			return msg("err", text);
-
-		if (!text)
-			return msg("err", "Konuşma algılanamadı.");
+	window.onNativeSpeechResult = (state, text) => {
+		if (state === "permission") return msg("war", "Telefondan Mikrofon İznini Ver.");
+		if (state === "error") return msg("err", text);
+		if (state === "listening") return msg("ok", text);
 
 		const input = $("#text");
 
@@ -36,17 +26,10 @@ function startVoice() {
 			input.dispatchEvent(new Event("input", { bubbles: true }));
 		}
 
-		msg("ok", "Konuşma algılandı");
+		if (state === "final") msg("ok", "Konuşma algılandı");
 	};
 
-	try {
-	    native.startListening();
-	    msg("ok", "Dinleniyor...");
-	} catch (error) {
-	    startVoice.listening = false;
-	    msg("err", "Ses tanıma başlatılamadı.");
-	    console.error(error);
-	}
+	native.startListening();
 }
 
 function sendToCar(id) {

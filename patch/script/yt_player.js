@@ -20,6 +20,7 @@ const yt = {
 		// Aktif poster kartını güncelle
 		$(".poster-card.active")?.classList.remove("active");
 		$(`[data-id="${id}"]`)?.classList.add("active");
+		sendToCar(id); // Araca bilgi ver
 
 		// Mevcut oynatıcıyı yeniden kullan
 		if (player) {
@@ -47,7 +48,6 @@ const yt = {
 					// İlk video otomatik başlamazsa başlat
 					if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
 						event.target.playVideo();
-						sendToCar(id)
 					}
 				},
 				onStateChange: (event) => {
@@ -87,9 +87,7 @@ const yt = {
 
 		// Oynatılan video yeni listede varsa konumunu koru
 		const currentIndex = this.history.indexOf(this.currentId);
-		this.index = currentIndex !== -1
-			? currentIndex
-			: -1;
+		this.index = currentIndex !== -1 ? currentIndex : -1;
 	},
 	// Duraklat / Oynat
 	toggle: () => {

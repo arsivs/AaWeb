@@ -22,6 +22,9 @@ const yt = {
 			sendToCar(id); // Yalnızca video değiştiğinde araca bilgi gönder
 		}
 
+		$(".poster-card.active")?.classList.remove("active");
+		$(`[data-id="${id}"]`)?.classList.add("active");
+
 		// Mevcut oynatıcıyı yeniden kullan
 		if (player) {
 			player.loadVideoById(id);

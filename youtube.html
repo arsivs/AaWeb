@@ -7,55 +7,42 @@
 <link rel="stylesheet" href="patch/styles/config.css">
 <script src="patch/script/js.js" type="text/javascript"></script>
 <style type="text/css">
-:root {
-    --bg: #07101f;
-    --panel: #0c192c;
-    --panel-light: #10213a;
-    --border: #1b3555;
-    --text: #f1f6ff;
-    --muted: #91a5c2;
-    --purple: #168cff;
-    --blue: #42b5ff;
-}
+
 </style>
 <script type="application/javascript">
-
 window.addEventListener("autoxkey", function(event) {
-    const keyCode = event.detail.keyCode;
-    //AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
-    switch (keyCode) {
-        case 87:
-            if (!ytReady) break;
-            yt.next();
-            msg("ok", "Sonraki");
-            break;
+	const keyCode = event.detail.keyCode;
+	//AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
+	switch (keyCode) {
+		case 87:
+			if (!ytReady) break;
+			yt.next();
+			msg("ok", "Sonraki");
+			break;
 
-        case 88:
-            if (!ytReady) break;
-            yt.prev();
-            msg("ok", "Önceki");
-            break;
+		case 88:
+			if (!ytReady) break;
+			yt.prev();
+			msg("ok", "Önceki");
+			break;
 
-        case 126:
-            if (!ytReady) break;
-            yt.toggle();
-            msg("ok", "Oynat");
-            break;
+		case 126:
+			if (!ytReady) break;
+			yt.toggle();
+			msg("ok", "Oynat");
+			break;
 
-        case 127:
-            if (!ytReady) break;
-            yt.toggle();
-            msg("ok", "Duraklat");
-            break;
+		case 127:
+			if (!ytReady) break;
+			yt.toggle();
+			msg("ok", "Duraklat");
+			break;
 
-        default:
-            msg("ok", "Diğer tuş:" + keyCode);
-            break;
-    }
+		default:
+			msg("ok", "Diğer tuş:" + keyCode);
+			break;
+	}
 });
-
-
-
 </script>
 </head>
 
@@ -67,16 +54,20 @@ window.addEventListener("autoxkey", function(event) {
 		<form action="javascript:yt_search();" method="get">
 			<button type="button" onclick="startVoice();"><i class="icon-mic"></i></button>
 			<input id="text" placeholder="Hadi aramaya başlayalım..!" type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
+			<button id="settings" type="button" onclick="$('.yt_content').classList.add('set');"><i class="icon-settings"></i></button>
 			<button type="submit"><i class="icon-search"></i></button>
 		</form>
 		</div>
 		<div class="results"></div>
 	</div>
 
-
 	<div class="rt">
 		<div id="player"><p>Zihninde çalan o melodiyi, içinden mırıldandığın o ilk şarkıyı buraya bırak; ritmi başlatalım...</p></div>
-        <div class="notice"></div>
+		<div class="notice"></div>
+	</div>
+
+	<div class="settings">
+		test
 	</div>
 </div>
 

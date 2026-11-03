@@ -1,0 +1,170 @@
+.yt_content {
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	height: 100vh;
+	padding: 30px;
+	gap: 30px;
+}
+.yt_content > div {
+	padding: var(--bg-padding);
+	background: var(--panel);
+	border: 1px solid var(--bg-border);
+	border-radius: var(--bg-border-radius);
+	box-shadow: var(--panel-light);
+}
+.yt_content.set .lt,
+.yt_content.set .rt {
+	display: none;
+}
+.yt_content.set .settings{
+	display: block;
+}
+
+/* Sol Kisim Baslangic */
+.yt_content .lt {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	flex-basis: 440px;
+}
+.yt_content .form {
+	padding: 9px;
+}
+.yt_content .lt form {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 60px;
+	border-radius: 30px;
+	margin-bottom: 10px;
+	border: 2px solid #174477;
+	background: linear-gradient(100deg, #0c1d34, #09172a);
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.yt_content .lt button[type=button] {
+	flex-shrink: 0;
+	flex-basis: 60px;
+	color: #45b5ff;
+	font-size: 18px;
+	cursor: pointer;
+}
+.yt_content .lt input {
+	flex-grow: 1;
+	color: inherit;
+	font-size: 16px;
+}
+.yt_content .lt input::placeholder {
+	color: #7289a8;
+}
+.yt_content .lt #settings {
+	flex-basis: 40px;
+}
+.yt_content .lt button[type=submit] {
+	flex-basis: 50px;
+	padding-right: 10px;
+	cursor: pointer;
+}
+
+.results {
+	display: flex;
+	flex-direction: column;
+	gap: 10px 0;
+	padding: 0 9px;
+	overflow: auto;
+}
+.poster-card {
+	display: flex;
+	flex-direction: row;
+	padding: 5px;
+	gap: 7px;
+	cursor: pointer;
+	border-color: #244b73;
+	background: linear-gradient(110deg, #112b48, #0d2037);
+}
+.poster-card.active {
+	background: linear-gradient(110deg, #12375c, #0d2340);
+	border-color: #168cff;
+	box-shadow: inset 3px 0 0 #168cff, 0 4px 18px #07101f30;
+}
+.poster-card:hover {
+	transform: translateY(-1px);
+}
+.poster-card .image {
+	flex-shrink: 0;
+	align-content: center;
+	flex-basis: 110px;
+	height: 70px;
+}
+.poster-card img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.poster-card .info {
+	flex-grow: 1;
+	align-self: center;
+}
+.poster-card h3 {
+	font-size: 16px;
+	max-height: 42px;
+	overflow: hidden;
+}
+.poster-card p {
+	color: var(--color-muted);
+	font-size: 12px;
+	line-height: 1.6;
+	margin-top: 5px;
+}
+.poster-card .duration {
+	align-self: center;
+	margin-right: 2px;
+	flex-shrink: 0;
+	flex-basis: 44px;
+	padding: 5px 0;
+	border: 1px solid #244568;
+	border-radius: 6px;
+	background: #10243b;
+	color: #8fcaff;
+	font-size: 12px;
+	font-weight: 500;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+/* So Kisim Bitis */
+
+/* Sag Kisim Baslangic */
+.yt_content .rt {
+	position: relative;
+	flex-grow: 1;
+	padding: 18px;
+	overflow: hidden;
+}
+.yt_content #player{
+	width: 100%;
+	height: 100%;
+	align-content: center;
+	text-align: center;
+}
+.yt_content .rt #player p {
+	padding: 20px 28px;
+	color: #a9c9ed;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.9;
+	letter-spacing: 0.3px;
+	background: linear-gradient(135deg,#a9c9ed 0%,#8b9dff 50%,#c3a6ff 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(0 0 14px #4b8dff20);
+}
+/* Sag Kisim Bitis */
+
+/* Ayarlar Baslangic */
+.settings {
+	flex-grow: 1;
+	display: none;
+}
+/* Ayarlar Bitis */

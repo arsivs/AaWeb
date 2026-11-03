@@ -15,12 +15,12 @@ const yt = {
 
 		// Açılan videonun listedeki konumunu bul
 		this.index = this.history.indexOf(id);
-		this.currentId = id;
 
 		// Aktif poster kartını güncelle
-		$(".poster-card.active")?.classList.remove("active");
-		$(`[data-id="${id}"]`)?.classList.add("active");
-		sendToCar(id); // Araca bilgi ver
+		if (this.currentId !== id) {
+			this.currentId = id;
+			sendToCar(id); // Yalnızca video değiştiğinde araca bilgi gönder
+		}
 
 		// Mevcut oynatıcıyı yeniden kullan
 		if (player) {

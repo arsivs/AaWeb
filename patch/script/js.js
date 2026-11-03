@@ -71,8 +71,9 @@ function include(url) {
 	$("head").appendChild(script);
 }
 include("patch/script/ex_js.js");
-include("patch/script/yt_search.js");
 include("patch/script/yt_player.js");
+include("patch/script/yt_search.js");
+include("patch/script/yt_temizle.js");
 include("patch/script/html.js");
 include("https://www.youtube.com/iframe_api");
 

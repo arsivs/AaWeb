@@ -112,7 +112,8 @@
 .poster-card .duration {
 	align-self: center;
 	margin-right: 2px;
-	flex-basis: 64px;
+	flex-shrink: 0;
+	flex-basis: 44px;
 	padding: 5px 0;
 	border: 1px solid #244568;
 	border-radius: 6px;

@@ -54,7 +54,7 @@ function yt_videos(ids){
 				(time[1] < 10) ? time[1] = 0+time[1] : (time[1] === undefined) ? time[1] = "00" : time[1];
 				res = {
 					id: item.id,
-					title: item.snippet.title, //url_slug(item.snippet.title, {delimiter:' ', lowercase: false, alphanumeric: false}), //item.snippet.title,
+					title: yt_temiz(item.snippet.title, {delimiter:' ', limit: 48, lowercase: false, alphanumeric: false}),
 					duration: time.join(":"),
 					duration_car: toSeconds(item.contentDetails.duration),
 					date: tarih(item.snippet.publishedAt),

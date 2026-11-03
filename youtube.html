@@ -22,10 +22,10 @@
 
 window.addEventListener("autoxkey", function(event) {
     const keyCode = event.detail.keyCode;
+    //AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
     switch (keyCode) {
         case 87:
             if (!ytReady) break;
-        	//deneme();
             yt.next();
             msg("ok", "Sonraki");
             break;
@@ -34,27 +34,22 @@ window.addEventListener("autoxkey", function(event) {
             if (!ytReady) break;
             yt.prev();
             msg("ok", "Önceki");
-            //AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
             break;
 
         case 126:
             if (!ytReady) break;
             yt.toggle();
             msg("ok", "Oynat");
-            AutoXMedia.setPlaying(true);  // oynat simgesi
             break;
 
         case 127:
             if (!ytReady) break;
             yt.toggle();
             msg("ok", "Duraklat");
-            AutoXMedia.setPlaying(false);  // oynat simgesi
             break;
 
         default:
-        	deneme();
             msg("ok", "Diğer tuş:" + keyCode);
-            //AutoXMedia.setPlaying(true);   // duraklat simgesi (çalıyor)
             break;
     }
 });

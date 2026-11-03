@@ -60,9 +60,7 @@ const yt = {
 					if ([YT.PlayerState.PAUSED,
 					  YT.PlayerState.BUFFERING,
 					  YT.PlayerState.ENDED].includes(state)) {
-
-						window.AutoXMedia?.setPlaying(false);
-						window.AutoXMedia?.setPosition(event.target.getCurrentTime(), true);
+						window.AutoXMedia?.setPosition(event.target.getCurrentTime(), false);
 					}
 
 					if (state === YT.PlayerState.ENDED) {

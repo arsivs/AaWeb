@@ -9,29 +9,44 @@ function button_yt(id){
 }
 
 function startVoice() {
-	const input = $('#text');
+	const native = window.NativeSpeech;
 
-	if (!window.NativeSpeech ||
-	  typeof window.NativeSpeech.startListening !== 'function') {
-		msg("err", "Android ses tanıma köprüsü bulunamadı.");
-		return;
-	}
+	if (typeof native?.startListening !== "function")
+		return msg("err", "Ses tanıma kullanılamıyor.");
 
-  window.onNativeSpeechResult = function(text) {
-		if (text.startsWith("Ses tanıma hatası:")) {
-			msg("err", text);
-			return;
-		}
+	if (startVoice.listening) return;
+	startVoice.listening = true;
 
-		if (input && text) {
+	window.onNativeSpeechResult = text => {
+		startVoice.listening = false;
+		if (typeof text !== "string") return;
+
+		text = text.trim();
+
+		if (text.startsWith("Ses tanıma hatası:"))
+			return msg("err", text);
+
+		if (!text)
+			return msg("err", "Konuşma algılanamadı.");
+
+		const input = $("#text");
+
+		if (input) {
 			input.value = text;
-			input.dispatchEvent(new Event('input', { bubbles: true }));
-			msg("ok", "Konuşma algılandı: " + text);
+			input.dispatchEvent(new Event("input", { bubbles: true }));
 		}
+
+		msg("ok", "Konuşma algılandı");
 	};
 
-	msg("ok", "Dinleniyor...");
-	window.NativeSpeech.startListening();
+	try {
+	    native.startListening();
+	    msg("ok", "Dinleniyor...");
+	} catch (error) {
+	    startVoice.listening = false;
+	    msg("err", "Ses tanıma başlatılamadı.");
+	    console.error(error);
+	}
 }
 
 function sendToCar(id) {

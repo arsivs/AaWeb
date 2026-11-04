@@ -54,7 +54,7 @@ window.addEventListener("autoxkey", function(event) {
 		<form action="javascript:yt_search();" method="get">
 			<button type="button" onclick="startVoice();"><i class="icon-mic big"></i></button>
 			<input id="text" placeholder="Hadi aramaya başlayalım..!" type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
-			<button id="settings" type="button" onclick="$('.yt_content').classList.add('set');"><i class="icon-settings"></i></button>
+			<button id="settings" type="button" onclick="menu_select('left');$('.yt_content').classList.add('set');"><i class="icon-settings"></i></button>
 			<button type="submit"><i class="icon-search big"></i></button>
 		</form>
 		</div>
@@ -67,28 +67,8 @@ window.addEventListener("autoxkey", function(event) {
 	</div>
 
 	<div class="settings">
-		<div class="lt">
-			<div class="head">
-				<button class="close" onclick="$('.yt_content').classList.remove('set')"><i class="icon-close"></i></button>
-				<i class="icon-settings big"></i>
-				<h2>Ayarlar</h2>
-			</div>
-
-			<div class="nav">
-				<button class="item active"><i class="icon-music big"></i>Müzik Arama</button>
-				<button class="item"><i class="icon-play big"></i>Oynatma</button>
-				<button class="item"><i class="icon-sliders big"></i>Görünüm</button>
-				<button class="item"><i class="icon-globe big"></i>Dil ve Bölge</button>
-				<button class="item"><i class="icon-database big"></i>Veri ve Önbellek</button>
-				<button class="item"><i class="icon-info big"></i>Uygulama Hakkında</button>
-			</div>
-
-
-		</div>
-
-		<div class="rt">
-			test
-		</div>
+		<div class="lt"></div>
+		<div class="rt"></div>
 	</div>
 </div>
 

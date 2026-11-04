@@ -1,0 +1,392 @@
+.yt_content {
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	height: 100vh;
+	padding: 30px;
+	gap: 30px;
+}
+.yt_content .lt,
+ .yt_content .rt {
+	padding: var(--bg-padding);
+	background: var(--panel);
+	border: 1px solid var(--bg-border);
+	border-radius: var(--bg-border-radius);
+	box-shadow: var(--panel-light);
+}
+.yt_content.set > .lt,
+.yt_content.set > .rt {
+	display: none;
+}
+
+/* Sol Kisim Baslangic */
+.yt_content .lt {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	flex-basis: 440px;
+}
+.yt_content .form {
+	padding: 9px;
+}
+.yt_content .lt form {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 60px;
+	border-radius: 30px;
+	margin-bottom: 10px;
+	border: 2px solid #174477;
+	background: linear-gradient(100deg, #0c1d34, #09172a);
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.yt_content .lt button[type=button] {
+	flex-shrink: 0;
+	flex-basis: 60px;
+	color: #45b5ff;
+	font-size: 18px;
+	cursor: pointer;
+}
+.yt_content .lt input {
+	flex-grow: 1;
+	color: inherit;
+	font-size: 16px;
+}
+.yt_content .lt input::placeholder {
+	color: #7289a8;
+}
+.yt_content .lt #settings {
+	flex-basis: 40px;
+}
+.yt_content .lt button[type=submit] {
+	flex-basis: 50px;
+	padding-right: 10px;
+	cursor: pointer;
+}
+
+.results {
+	display: flex;
+	flex-direction: column;
+	gap: 10px 0;
+	padding: 0 9px;
+	overflow: auto;
+}
+.poster-card {
+	display: flex;
+	flex-direction: row;
+	padding: 5px;
+	gap: 7px;
+	cursor: pointer;
+	border-color: #244b73;
+	background: linear-gradient(110deg, #112b48, #0d2037);
+}
+.poster-card.active {
+	background: linear-gradient(110deg, #12375c, #0d2340);
+	border-color: #168cff;
+	box-shadow: inset 3px 0 0 #168cff, 0 4px 18px #07101f30;
+}
+.poster-card:hover {
+	transform: translateY(-1px);
+}
+.poster-card .image {
+	flex-shrink: 0;
+	align-content: center;
+	flex-basis: 110px;
+	height: 70px;
+}
+.poster-card img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.poster-card .info {
+	flex-grow: 1;
+	align-self: center;
+}
+.poster-card h3 {
+	font-size: 16px;
+	max-height: 42px;
+	overflow: hidden;
+}
+.poster-card p {
+	color: var(--color-muted);
+	font-size: 12px;
+	line-height: 1.6;
+	margin-top: 5px;
+}
+.poster-card .duration {
+	align-self: center;
+	margin-right: 2px;
+	flex-shrink: 0;
+	flex-basis: 44px;
+	padding: 5px 0;
+	border: 1px solid #244568;
+	border-radius: 6px;
+	background: #10243b;
+	color: #8fcaff;
+	font-size: 12px;
+	font-weight: 500;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+/* So Kisim Bitis */
+
+/* Sag Kisim Baslangic */
+.yt_content .rt {
+	position: relative;
+	flex-grow: 1;
+	padding: 18px;
+	overflow: hidden;
+}
+.yt_content #player{
+	width: 100%;
+	height: 100%;
+	align-content: center;
+	text-align: center;
+}
+.yt_content .rt #player p {
+	padding: 20px 28px;
+	color: #a9c9ed;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.9;
+	letter-spacing: 0.3px;
+	background: linear-gradient(135deg,#a9c9ed 0%,#8b9dff 50%,#c3a6ff 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(0 0 14px #4b8dff20);
+}
+/* Sag Kisim Bitis */
+
+/* Ayarlar Baslangic */
+.settings {
+	display: none;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 30px;
+}
+.settings .lt {
+	gap: 12px;
+}
+.settings button, .settings select {
+	cursor: pointer;
+}
+.yt_content.set .settings {
+	display: flex;
+}
+
+/* Sol Kisim Start */
+.settings .lt .head {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 12px;
+}
+.settings .lt .close {
+	width: 54px;
+	height: 54px;
+	display: grid;
+	place-items: center;
+	border: 1px solid #225a8c;
+	background: #0b1c32;
+	border-radius: 50%;
+	transition: .2s;
+}
+.settings .lt .close:hover {
+	background: #123b62;
+	box-shadow: 0 0 15px #158dff44;
+}
+.settings .lt .h2 {
+	margin: 0;
+	font-size: 26px;
+	font-weight: 650;
+}
+.settings .lt .nav {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	padding: 9px;
+	overflow-x: auto;
+}
+.settings .lt .item {
+	width: 100%;
+	min-height: 62px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 15px;
+	border: 1px solid transparent;
+	border-radius: 14px;
+	background: transparent;
+	text-align: left;
+	color: #b4c8e6;
+	font-size: 18px;
+	transition: .2s;
+}
+.settings .lt .item.active {
+	box-shadow: rgba(39, 157, 255, 0.333) 0px 0px 0px 1px inset, rgba(22, 139, 255, 0.267) 0px 0px 16px;
+	color: rgb(255, 255, 255);
+	background: linear-gradient(100deg, rgb(21, 69, 118), rgb(16, 44, 75));
+	border-color: rgb(39, 157, 255);
+}
+.settings .lt .item.active::after {
+	content: "";
+	width: 24px;
+	height: 24px;
+	margin: 0 0 0 auto;
+	background: url(../images/icons.svg) no-repeat;
+	background-size: cover;
+	background-position: -568px 0;
+}
+.settings .lt .item:hover {
+	background: #15304d;
+}
+/* Sol Kisim End */
+
+/* Sag Kisim Start */
+.settings .rt {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	padding: 26px 14px;
+}
+.settings .rt .head {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 0 14px;
+}
+.settings .rt .head h2 {
+	margin: 0 0 5px;
+	font-size: 27px;
+}
+.settings .rt .head p {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 15px;
+}
+
+.settings .rt .section {
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+	padding: 0 14px;
+	overflow-x: auto;
+}
+.settings .rt .row {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	min-height: 72px;
+	padding: 12px 18px;
+	border: 1px solid #214363;
+	border-radius: 17px;
+	background: linear-gradient(100deg, #10253e, #0b1b31);
+}
+.settings .rt .row .label {
+	flex: 1;
+	min-width: 0;
+}
+.settings .rt .row strong {
+	display: block;
+	font-size: 17px;
+	font-weight: 500;
+	margin-bottom: 3px;
+}
+.settings .rt .row small {
+	display: block;
+	color: var(--color-muted);
+	font-size: 13px;
+	line-height: 1.35;
+}
+.settings .rt .row select {
+	font-size: 16px;
+	min-width: 170px;
+	max-width: 45%;
+	color: var(--color);
+	background: #0c2039;
+	border: 1px solid #315c85;
+	border-radius: 12px;
+
+	appearance: none;
+	padding: 10px 35px 10px 12px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+}
+.settings .rt .row option {
+	background: #0c2039;
+	color: #fff;
+}
+
+.settings .rt .stepper {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	border: 1px solid #315c85;
+	border-radius: 12px;
+	padding: 4px;
+}
+.settings .stepper button {
+	width: 38px;
+	height: 38px;
+	border: 0;
+	border-radius: 9px;
+	background: #203d5f;
+	font-size: 23px;
+	color: var(--color);
+}
+.settings .stepper button:hover {
+	background: #2469aa;
+}
+.settings .stepper output {
+	min-width: 22px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.settings .rt .switch {
+	position: relative;
+	display: inline-flex;
+	flex-shrink: 0;
+	width: 60px;
+	height: 34px;
+}
+.settings .rt .switch input {
+	position: absolute;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+.settings .rt .switch span {
+	width: 100%;
+	border-radius: 40px;
+	background: #29405b;
+	transition: .2s;
+	box-shadow: inset 0 0 0 1px #45617d;
+}
+.settings .rt .switch input:checked+span {
+	background: #167bf2;
+	box-shadow: 0 0 12px #167bf244;
+}
+.settings .rt .switch span:before {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: #eaf3ff;
+	cursor: pointer;
+	transition: .2s;
+}
+.settings .rt .switch input:checked+span:before {
+	transform: translateX(26px);
+}
+/* Sag Kisim End */
+
+/* Ayarlar Bitis */

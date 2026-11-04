@@ -9,22 +9,60 @@
 	background-position: left top;
     flex-shrink: 0;
 }
+[class^="icon-"].big {
+	width:38px;
+	height:38px;
+}
 
 .icon-ok       {background-position-x: 0;}
 .icon-war      {background-position-x: -24px;}
 .icon-err      {background-position-x: -48px;}
 .icon-settings {background-position-x: -120px;}
-.icon-mic {
-	width: 38px;
-	height: 38px;
-	background-position-x: -150px;
-}
-.icon-search, .icon-spin {
-	width: 28px;
-	height: 28px;
-	background-position-x: -168px;
-}
+.icon-mic {background-position-x: -96px;}
+.icon-search {background-position-x: -144px;}
 .icon-spin {background-position-x: -84px;}
+
+.icon-close{background-position-x:-168px}
+.icon-music{background-position-x:-192px}
+.icon-play{background-position-x:-216px}
+.icon-sliders{background-position-x:-240px}
+.icon-globe{background-position-x:-264px}
+.icon-database{background-position-x:-288px}
+.icon-info{background-position-x:-312px}
+.icon-list{background-position-x:-336px}
+.icon-filter{background-position-x:-360px}
+.icon-skip{background-position-x:-384px}
+.icon-clock{background-position-x:-408px}
+.icon-trend{background-position-x:-432px}
+.icon-reset{background-position-x:-456px}
+.icon-check{background-position-x:-480px}
+.icon-chevron{background-position-x:-504px}
+.icon-volume{background-position-x:-528px}
+.icon-shield{background-position-x:-552px}
+.icon-ok.big{background-position-x:-0px}
+.icon-war.big{background-position-x:-36px}
+.icon-err.big{background-position-x:-72px}
+.icon-spin.big{background-position-x:-108px}
+.icon-mic.big{background-position-x:-150px}
+.icon-settings.big{background-position-x:-188px}
+.icon-search.big{background-position-x:-225px}
+.icon-close.big{background-position-x:-252px}
+.icon-music.big{background-position-x:-308px}
+.icon-play.big{background-position-x:-346px}
+.icon-sliders.big{background-position-x:-374px}
+.icon-globe.big{background-position-x:-413px}
+.icon-database.big{background-position-x:-461px}
+.icon-info.big{background-position-x:-499px}
+.icon-list.big{background-position-x:-504px}
+.icon-filter.big{background-position-x:-540px}
+.icon-skip.big{background-position-x:-576px}
+.icon-clock.big{background-position-x:-612px}
+.icon-trend.big{background-position-x:-648px}
+.icon-reset.big{background-position-x:-684px}
+.icon-check.big{background-position-x:-720px}
+.icon-chevron.big{background-position-x:-756px}
+.icon-volume.big{background-position-x:-792px}
+.icon-shield.big{background-position-x:-828px}
 /* Icons End */
 
 /* Notification Start */

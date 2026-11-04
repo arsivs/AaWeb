@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AutoX Andorid Auto</title>
 <link rel="stylesheet" href="patch/styles/config.css">
-<script src="patch/script/js.js" type="text/javascript"></script>
+<script src="patch/script/js.js" type="text/javascript" defer></script>
 <style type="text/css">
 
 </style>
@@ -48,14 +48,14 @@ window.addEventListener("autoxkey", function(event) {
 
 <body>
 
-<div class="yt_content">
+<div class="yt_content set">
 	<div class="lt">
 		<div class="form">
 		<form action="javascript:yt_search();" method="get">
-			<button type="button" onclick="startVoice();"><i class="icon-mic"></i></button>
+			<button type="button" onclick="startVoice();"><i class="icon-mic big"></i></button>
 			<input id="text" placeholder="Hadi aramaya başlayalım..!" type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
 			<button id="settings" type="button" onclick="$('.yt_content').classList.add('set');"><i class="icon-settings"></i></button>
-			<button type="submit"><i class="icon-search"></i></button>
+			<button type="submit"><i class="icon-search big"></i></button>
 		</form>
 		</div>
 		<div class="results"></div>
@@ -68,8 +68,24 @@ window.addEventListener("autoxkey", function(event) {
 
 	<div class="settings">
 		<div class="lt">
-			test
+			<div class="head">
+				<button class="close" onclick="$('.yt_content').classList.remove('set')"><i class="icon-close"></i></button>
+				<i class="icon-settings big"></i>
+				<h2>Ayarlar</h2>
+			</div>
+
+			<div class="nav">
+				<button class="item active"><i class="icon-music big"></i>Müzik Arama</button>
+				<button class="item"><i class="icon-play big"></i>Oynatma</button>
+				<button class="item"><i class="icon-sliders big"></i>Görünüm</button>
+				<button class="item"><i class="icon-globe big"></i>Dil ve Bölge</button>
+				<button class="item"><i class="icon-database big"></i>Veri ve Önbellek</button>
+				<button class="item"><i class="icon-info big"></i>Uygulama Hakkında</button>
+			</div>
+
+
 		</div>
+
 		<div class="rt">
 			test
 		</div>

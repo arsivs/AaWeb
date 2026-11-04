@@ -167,8 +167,86 @@
     flex-grow: 1;
     gap: 30px;
 }
-.yt_content.set .settings{
+.settings .lt {
+	padding: 20px 16px;
+	gap: 24px;
+}
+.settings button, .settings select {
+	cursor: pointer;
+}
+.yt_content.set .settings {
 	display: flex;
 }
+
+/* Sol Kisim Start */
+.settings .lt .head {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 0 2px;
+}
+.settings .lt .close {
+	width: 54px;
+	height: 54px;
+	display: grid;
+	place-items: center;
+	border: 1px solid #225a8c;
+	background: #0b1c32;
+	border-radius: 50%;
+	transition: .2s;
+}
+.settings .lt .close:hover {
+	background: #123b62;
+	box-shadow: 0 0 15px #158dff44;
+}
+.settings .lt .h2 {
+	margin: 0;
+	font-size: 26px;
+	font-weight: 650;
+}
+.settings .lt .nav {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	overflow-x: auto;
+}
+.settings .lt .item {
+	width: 100%;
+	min-height: 62px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 15px;
+	border: 1px solid transparent;
+	border-radius: 14px;
+	background: transparent;
+	text-align: left;
+	color: #b4c8e6;
+	font-size: 18px;
+	transition: .2s;
+}
+.settings .lt .item.active {
+	box-shadow: rgba(39, 157, 255, 0.333) 0px 0px 0px 1px inset, rgba(22, 139, 255, 0.267) 0px 0px 16px;
+	color: rgb(255, 255, 255);
+	background: linear-gradient(100deg, rgb(21, 69, 118), rgb(16, 44, 75));
+	border-color: rgb(39, 157, 255);
+}
+.settings .lt .item.active::after {
+	content: "";
+	width: 24px;
+	height: 24px;
+	margin: 0 0 0 auto;
+	background: url(../images/icons.svg) no-repeat;
+	background-size: cover;
+	background-position: -504px top;
+}
+.settings .lt .item:hover {
+	background: #15304d;
+}
+/* Sol Kisim End */
+
+/* Sag Kisim Start */
+
+/* Sag Kisim End */
 
 /* Ayarlar Bitis */

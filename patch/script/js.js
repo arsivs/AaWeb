@@ -8,6 +8,13 @@ function button_yt(id){
 	yt.init(id);
 }
 
+document.querySelectorAll('.settings .item').forEach(btn => {
+	btn.onclick = () => {
+		document.querySelector('.settings .item.active')?.classList.remove('active');
+		btn.classList.add('active');
+	};
+});
+
 function startVoice() {
 	const native = window.NativeSpeech;
 

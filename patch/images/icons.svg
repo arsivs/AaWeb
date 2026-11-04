@@ -1,69 +1,69 @@
 <?xml version='1.0' encoding='utf-8'?>
-<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="168" height="24" viewBox="0 0 168 24"><ns0:svg x="0" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ns0:circle cx="12" cy="12" r="10" />
-    <ns0:path d="m8 12 3 3 5-6" />
-</ns0:svg><ns0:svg x="24" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffb21b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ns0:path d="M10.3 3.9 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
-    <ns0:path d="M12 9v4" />
-    <ns0:path d="M12 17h.01" />
-</ns0:svg><ns0:svg x="48" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4d57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ns0:circle cx="12" cy="12" r="10" />
-    <ns0:path d="M12 7v6" />
-    <ns0:path d="M12 17h.01" />
-</ns0:svg><ns0:svg x="72" y="0" width="24" height="24" viewBox="0 0 100 100"><ns0:style>
+<svg xmlns="http://www.w3.org/2000/svg" width="576" height="24" viewBox="0 0 576 24"><svg x="0" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+    <path d="m8 12 3 3 5-6" />
+</svg><svg x="24" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffb21b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+    <path d="M12 9v4" />
+    <path d="M12 17h.01" />
+</svg><svg x="48" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4d57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+    <path d="M12 7v6" />
+    <path d="M12 17h.01" />
+</svg><svg x="72" y="0" width="24" height="24" viewBox="0 0 100 100"><style>
 	#autox-spinner {
 	    transform-origin: 50px 50px;
 	    animation: spin 1.5s linear infinite;
 	}
     @keyframes spin { to { transform: rotate(360deg); } }
-  </ns0:style>
-  <ns0:defs>
-    <ns0:linearGradient id="spin-a" x1="0" y1="0" x2="1" y2="1">
-      <ns0:stop stop-color="#97e0ff" />
-      <ns0:stop offset="1" stop-color="#1075ff" />
-    </ns0:linearGradient>
-  </ns0:defs>
-  <ns0:g fill="url(#spin-a)" id="autox-spinner">
-    <ns0:path d="M50 2.5c-3.2 0-5.9 2.7-5.9 5.9v11.9c0 3.3 2.7 5.9 5.9 5.9s5.9-2.7 5.9-5.9V8.4c0-3.3-2.7-5.9-5.9-5.9" />
-    <ns0:path d="M50 73.8c-3.3 0-5.9 2.7-5.9 5.9v11.9c0 3.3 2.7 5.9 5.9 5.9s5.9-2.7 5.9-5.9V79.7c0-3.3-2.6-5.9-5.9-5.9" />
-    <ns0:path d="M33.2 33.5c2.3-2.6 2.3-6.4 0-8.7l-8.5-8.3c-2.4-2.4-6.1-2.4-8.5 0s-2.4 6.1 0 8.5l8.5 8.5c2.4 2.4 6.1 2.4 8.5 0" />
-    <ns0:path d="M75.2 66.7c-2.4-2.4-6.1-2.4-8.5 0s-2.4 6.1 0 8.5l8.5 8.3c2.4 2.4 6.1 2.4 8.5 0s2.4-6.1 0-8.5z" />
-    <ns0:path d="M26.2 50c0-3.2-2.7-5.9-5.9-5.9H8.4c-3.3 0-5.9 2.7-5.9 5.9s2.7 5.9 5.9 5.9h11.9c3.3 0 5.9-2.7 5.9-5.9" />
-    <ns0:path d="M91.6 44.1H79.7c-3.3 0-5.9 2.7-5.9 5.9s2.7 5.9 5.9 5.9h11.9c3.2 0 5.9-2.6 5.9-5.9s-2.7-5.9-5.9-5.9" />
-    <ns0:path d="m24.8 66.8-8.3 8.5c-2.4 2.4-2.4 6.1 0 8.5s6.1 2.4 8.5 0l8.5-8.5c2.4-2.4 2.4-6.1 0-8.5-2.6-2.3-6.4-2.3-8.7 0" />
-    <ns0:path d="m75.3 33.2 8.5-8.5c2.4-2.4 2.4-6.1 0-8.5s-6.1-2.4-8.5 0l-8.5 8.5c-2.3 2.4-2.3 6.2 0 8.5 2.4 2.4 6.1 2.4 8.5 0" />
-  </ns0:g>
-</ns0:svg><ns0:svg x="96" y="0" width="24" height="24" viewBox="0 0 100 100"><ns0:defs>
-    <ns0:linearGradient id="mic-g" x1="0" y1="0" x2="1" y2="1">
-      <ns0:stop stop-color="#97e0ff" />
-      <ns0:stop offset="1" stop-color="#1075ff" />
-    </ns0:linearGradient>
-  </ns0:defs>
-  <ns0:g fill="url(#mic-g)">
-    <ns0:path d="M50 67.813A17.813 17.813 0 0 0 67.813 50V20.313a17.813 17.813 0 0 0-35.626 0V50A17.813 17.813 0 0 0 50 67.813Z" />
-    <ns0:path d="M73.75 41.094V50a23.75 23.75 0 0 1-47.5 0v-8.906a2.969 2.969 0 0 0-5.938 0V50a29.69 29.69 0 0 0 26.72 29.54v9.054a2.969 2.969 0 0 1-2.97 2.969h-2.968a2.969 2.969 0 0 0 0 5.937h17.812a2.969 2.969 0 0 0 0-5.937h-2.968a2.969 2.969 0 0 1-2.97-2.97V79.54A29.69 29.69 0 0 0 79.688 50v-8.906a2.969 2.969 0 0 0-5.937 0Z" />
-  </ns0:g>
-</ns0:svg><ns0:svg x="120" y="0" width="24" height="24" viewBox="0 0 100 100"><ns0:defs>
-<ns0:linearGradient id="settings-a">
-<ns0:stop stop-color="#97e0ff" />
-<ns0:stop offset="1" stop-color="#1075ff" />
-</ns0:linearGradient>
-<ns0:linearGradient id="settings-b" href="#settings-a" x1="-1.317" x2="98.304" y1="-8.176" y2="102.809" gradientUnits="userSpaceOnUse" />
-<ns0:linearGradient id="settings-c" href="#settings-a" x1="25.368" x2="124.989" y1="-32.128" y2="78.857" gradientUnits="userSpaceOnUse" />
-<ns0:linearGradient id="settings-d" href="#settings-a" x1="-8.07" x2="91.552" y1="-2.114" y2="108.87" gradientUnits="userSpaceOnUse" />
-<ns0:linearGradient id="settings-e" href="#settings-a" x1="18.615" x2="118.236" y1="-26.067" y2="84.918" gradientUnits="userSpaceOnUse" />
-<ns0:linearGradient id="settings-f" href="#settings-a" x1="-31.806" x2="67.815" y1="19.192" y2="130.177" gradientUnits="userSpaceOnUse" />
-<ns0:linearGradient id="settings-g" href="#settings-a" x1="-5.122" x2="94.5" y1="-4.761" y2="106.224" gradientUnits="userSpaceOnUse" />
-</ns0:defs>
-<ns0:path fill="url(#settings-b)" d="M15.7 14.951c1.804-5.104 6.672-8.762 12.395-8.762 7.258 0 13.143 5.885 13.143 13.144s-5.885 13.143-13.143 13.143c-5.723 0-10.591-3.658-12.396-8.762H6.881a4.381 4.381 0 1 1 0-8.763z" />
-<ns0:path fill="url(#settings-c)" d="M97.5 19.333a4.38 4.38 0 0 0-4.381-4.382H50a4.381 4.381 0 1 0 0 8.763h43.119a4.38 4.38 0 0 0 4.381-4.381" />
-<ns0:path fill="url(#settings-d)" d="M46.367 54.381c1.804 5.105 6.673 8.762 12.395 8.762 7.26 0 13.143-5.884 13.143-13.143s-5.884-13.143-13.143-13.143c-5.722 0-10.591 3.657-12.395 8.762H6.88a4.381 4.381 0 1 0 0 8.762z" />
-<ns0:path fill="url(#settings-e)" d="M93.119 45.619a4.381 4.381 0 1 1 0 8.762H80.667a4.381 4.381 0 1 1 0-8.762z" />
-<ns0:path fill="url(#settings-f)" d="M15.7 76.286c1.804-5.104 6.672-8.762 12.395-8.762 7.258 0 13.143 5.884 13.143 13.143s-5.885 13.144-13.143 13.144c-5.723 0-10.591-3.658-12.396-8.762H6.881a4.381 4.381 0 1 1 0-8.763z" />
-<ns0:path fill="url(#settings-g)" d="M93.119 76.286a4.381 4.381 0 1 1 0 8.763H50a4.381 4.381 0 1 1 0-8.763z" />
-</ns0:svg><ns0:svg viewBox="0 0 100 100" x="144" y="0" width="24" height="24">
-<ns0:defs>
-<ns0:linearGradient id="a"><ns0:stop stop-color="#97e0ff" /><ns0:stop offset="1" stop-color="#1075ff" /></ns0:linearGradient>
-</ns0:defs>
-<ns0:g fill="url(#a)">
-<ns0:path d="M43.804 2.5c-20.8 0-37.7 16.8-37.7 37.7 0 20.8 16.9 37.7 37.7 37.7s37.7-16.8 37.7-37.7-16.8-37.7-37.7-37.7m0 64c-14.4 0-26.2-11.8-26.2-26.2s11.7-26.3 26.2-26.3c14.6 0 26.2 11.7 26.2 26.2 0 14.4-11.8 26.3-26.2 26.3" />
-<ns0:path d="M87.104 97.5c-1.7 0-3.6-.7-4.9-2.1l-22.6-24.5c-2.6-2.7-2.4-6.9.4-9.5 2.7-2.5 6.9-2.4 9.5.4l22.6 24.5c2.5 2.7 2.4 6.9-.4 9.5-1.3 1-2.9 1.7-4.6 1.7" />
-</ns0:g>
-</ns0:svg></ns0:svg>
+  </style>
+  <defs>
+    <linearGradient id="spin-a" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#97e0ff" />
+      <stop offset="1" stop-color="#1075ff" />
+    </linearGradient>
+  </defs>
+  <g fill="url(#spin-a)" id="autox-spinner">
+    <path d="M50 2.5c-3.2 0-5.9 2.7-5.9 5.9v11.9c0 3.3 2.7 5.9 5.9 5.9s5.9-2.7 5.9-5.9V8.4c0-3.3-2.7-5.9-5.9-5.9" />
+    <path d="M50 73.8c-3.3 0-5.9 2.7-5.9 5.9v11.9c0 3.3 2.7 5.9 5.9 5.9s5.9-2.7 5.9-5.9V79.7c0-3.3-2.6-5.9-5.9-5.9" />
+    <path d="M33.2 33.5c2.3-2.6 2.3-6.4 0-8.7l-8.5-8.3c-2.4-2.4-6.1-2.4-8.5 0s-2.4 6.1 0 8.5l8.5 8.5c2.4 2.4 6.1 2.4 8.5 0" />
+    <path d="M75.2 66.7c-2.4-2.4-6.1-2.4-8.5 0s-2.4 6.1 0 8.5l8.5 8.3c2.4 2.4 6.1 2.4 8.5 0s2.4-6.1 0-8.5z" />
+    <path d="M26.2 50c0-3.2-2.7-5.9-5.9-5.9H8.4c-3.3 0-5.9 2.7-5.9 5.9s2.7 5.9 5.9 5.9h11.9c3.3 0 5.9-2.7 5.9-5.9" />
+    <path d="M91.6 44.1H79.7c-3.3 0-5.9 2.7-5.9 5.9s2.7 5.9 5.9 5.9h11.9c3.2 0 5.9-2.6 5.9-5.9s-2.7-5.9-5.9-5.9" />
+    <path d="m24.8 66.8-8.3 8.5c-2.4 2.4-2.4 6.1 0 8.5s6.1 2.4 8.5 0l8.5-8.5c2.4-2.4 2.4-6.1 0-8.5-2.6-2.3-6.4-2.3-8.7 0" />
+    <path d="m75.3 33.2 8.5-8.5c2.4-2.4 2.4-6.1 0-8.5s-6.1-2.4-8.5 0l-8.5 8.5c-2.3 2.4-2.3 6.2 0 8.5 2.4 2.4 6.1 2.4 8.5 0" />
+  </g>
+</svg><svg x="96" y="0" width="24" height="24" viewBox="0 0 100 100"><defs>
+    <linearGradient id="mic-g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#97e0ff" />
+      <stop offset="1" stop-color="#1075ff" />
+    </linearGradient>
+  </defs>
+  <g fill="url(#mic-g)">
+    <path d="M50 67.813A17.813 17.813 0 0 0 67.813 50V20.313a17.813 17.813 0 0 0-35.626 0V50A17.813 17.813 0 0 0 50 67.813Z" />
+    <path d="M73.75 41.094V50a23.75 23.75 0 0 1-47.5 0v-8.906a2.969 2.969 0 0 0-5.938 0V50a29.69 29.69 0 0 0 26.72 29.54v9.054a2.969 2.969 0 0 1-2.97 2.969h-2.968a2.969 2.969 0 0 0 0 5.937h17.812a2.969 2.969 0 0 0 0-5.937h-2.968a2.969 2.969 0 0 1-2.97-2.97V79.54A29.69 29.69 0 0 0 79.688 50v-8.906a2.969 2.969 0 0 0-5.937 0Z" />
+  </g>
+</svg><svg x="120" y="0" width="24" height="24" viewBox="0 0 100 100"><defs>
+<linearGradient id="settings-a">
+<stop stop-color="#97e0ff" />
+<stop offset="1" stop-color="#1075ff" />
+</linearGradient>
+<linearGradient id="settings-b" href="#settings-a" x1="-1.317" x2="98.304" y1="-8.176" y2="102.809" gradientUnits="userSpaceOnUse" />
+<linearGradient id="settings-c" href="#settings-a" x1="25.368" x2="124.989" y1="-32.128" y2="78.857" gradientUnits="userSpaceOnUse" />
+<linearGradient id="settings-d" href="#settings-a" x1="-8.07" x2="91.552" y1="-2.114" y2="108.87" gradientUnits="userSpaceOnUse" />
+<linearGradient id="settings-e" href="#settings-a" x1="18.615" x2="118.236" y1="-26.067" y2="84.918" gradientUnits="userSpaceOnUse" />
+<linearGradient id="settings-f" href="#settings-a" x1="-31.806" x2="67.815" y1="19.192" y2="130.177" gradientUnits="userSpaceOnUse" />
+<linearGradient id="settings-g" href="#settings-a" x1="-5.122" x2="94.5" y1="-4.761" y2="106.224" gradientUnits="userSpaceOnUse" />
+</defs>
+<path fill="url(#settings-b)" d="M15.7 14.951c1.804-5.104 6.672-8.762 12.395-8.762 7.258 0 13.143 5.885 13.143 13.144s-5.885 13.143-13.143 13.143c-5.723 0-10.591-3.658-12.396-8.762H6.881a4.381 4.381 0 1 1 0-8.763z" />
+<path fill="url(#settings-c)" d="M97.5 19.333a4.38 4.38 0 0 0-4.381-4.382H50a4.381 4.381 0 1 0 0 8.763h43.119a4.38 4.38 0 0 0 4.381-4.381" />
+<path fill="url(#settings-d)" d="M46.367 54.381c1.804 5.105 6.673 8.762 12.395 8.762 7.26 0 13.143-5.884 13.143-13.143s-5.884-13.143-13.143-13.143c-5.722 0-10.591 3.657-12.395 8.762H6.88a4.381 4.381 0 1 0 0 8.762z" />
+<path fill="url(#settings-e)" d="M93.119 45.619a4.381 4.381 0 1 1 0 8.762H80.667a4.381 4.381 0 1 1 0-8.762z" />
+<path fill="url(#settings-f)" d="M15.7 76.286c1.804-5.104 6.672-8.762 12.395-8.762 7.258 0 13.143 5.884 13.143 13.143s-5.885 13.144-13.143 13.144c-5.723 0-10.591-3.658-12.396-8.762H6.881a4.381 4.381 0 1 1 0-8.763z" />
+<path fill="url(#settings-g)" d="M93.119 76.286a4.381 4.381 0 1 1 0 8.763H50a4.381 4.381 0 1 1 0-8.763z" />
+</svg><svg viewBox="0 0 100 100" x="144" y="0" width="24" height="24">
+<defs>
+<linearGradient id="a"><stop stop-color="#97e0ff" /><stop offset="1" stop-color="#1075ff" /></linearGradient>
+</defs>
+<g fill="url(#a)">
+<path d="M43.804 2.5c-20.8 0-37.7 16.8-37.7 37.7 0 20.8 16.9 37.7 37.7 37.7s37.7-16.8 37.7-37.7-16.8-37.7-37.7-37.7m0 64c-14.4 0-26.2-11.8-26.2-26.2s11.7-26.3 26.2-26.3c14.6 0 26.2 11.7 26.2 26.2 0 14.4-11.8 26.3-26.2 26.3" />
+<path d="M87.104 97.5c-1.7 0-3.6-.7-4.9-2.1l-22.6-24.5c-2.6-2.7-2.4-6.9.4-9.5 2.7-2.5 6.9-2.4 9.5.4l22.6 24.5c2.5 2.7 2.4 6.9-.4 9.5-1.3 1-2.9 1.7-4.6 1.7" />
+</g>
+</svg><svg x="168" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12" /></svg><svg x="192" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13M9 9l12-2M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg><svg x="216" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z" /></svg><svg x="240" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 17h16M9 4v6M15 14v6" /></svg><svg x="264" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM2 12h20M12 2c-6 5-6 15 0 20M12 2c6 5 6 15 0 20" /></svg><svg x="288" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6c0-5 18-5 18 0s-18 5-18 0ZM3 6v12c0 5 18 5 18 0V6M3 12c0 5 18 5 18 0" /></svg><svg x="312" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM12 11v6M12 7h.01" /></svg><svg x="336" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" /></svg><svg x="360" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v7l-4 2v-9z" /></svg><svg x="384" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5l9 7-9 7V5ZM13 5l9 7-9 7V5Z" /></svg><svg x="408" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM12 6v6l4 2" /></svg><svg x="432" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-9M15 6h6v6" /></svg><svg x="456" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 1 1 3 7M3 4v7h7" /></svg><svg x="480" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6" /></svg><svg x="504" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7" /></svg><svg x="528" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4zM17 9a5 5 0 0 1 0 6" /></svg><svg x="552" y="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65b9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 6 4 9 8 11 4-2 8-5 8-11V5z" /></svg></svg>

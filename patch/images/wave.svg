@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 180" fill="none" role="img" aria-label="Hareketli mavi mor ışık dalgası">
+<defs>
+ <linearGradient id="wave" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#007dff" stop-opacity="0"/><stop offset=".22" stop-color="#00aaff"/><stop offset=".52" stop-color="#3f78ff"/><stop offset=".78" stop-color="#884bff"/><stop offset="1" stop-color="#7c39ff" stop-opacity="0"/></linearGradient>
+ <filter id="blur" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="13"/></filter>
+ <filter id="glow" x="-10%" y="-100%" width="120%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<g>
+ <path id="shape" d="M0 96 C125 96 145 37 260 60 S420 142 535 107 S690 43 785 71 S930 110 1000 92" stroke="url(#wave)" stroke-width="19" opacity=".55" filter="url(#blur)"/>
+ <path d="M0 96 C125 96 145 37 260 60 S420 142 535 107 S690 43 785 71 S930 110 1000 92" stroke="url(#wave)" stroke-width="5" opacity=".75" filter="url(#glow)"/>
+ <path d="M0 96 C125 96 145 37 260 60 S420 142 535 107 S690 43 785 71 S930 110 1000 92" stroke="url(#wave)" stroke-width="1.8"/>
+ <animateTransform attributeName="transform" type="translate" values="0 0;0 9;0 -6;0 0" dur="7s" repeatCount="indefinite"/>
+ <animate attributeName="opacity" values=".75;1;.75" dur="5s" repeatCount="indefinite"/>
+</g>
+<path d="M0 102 C145 107 170 62 270 79 S420 127 535 99 S690 67 800 86 S940 106 1000 96" stroke="url(#wave)" stroke-width="1.2" opacity=".38">
+ <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0 102 C145 107 170 62 270 79 S420 127 535 99 S690 67 800 86 S940 106 1000 96;M0 102 C145 65 170 113 270 85 S420 70 535 112 S690 112 800 79 S940 87 1000 96;M0 102 C145 107 170 62 270 79 S420 127 535 99 S690 67 800 86 S940 106 1000 96"/>
+</path>
+</svg>

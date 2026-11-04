@@ -109,8 +109,8 @@ function msg(type, msg) {
 
   sec.onanimationend = (e) => {
       if (e.target !== sec) return;
-      //sec.style.display = "none";
-      //sec.innerHTML = "";
+      sec.style.display = "none";
+      sec.innerHTML = "";
   };
 }
 

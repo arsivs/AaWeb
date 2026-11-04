@@ -97,15 +97,16 @@
 	display: block;
 	width: 28px;
 	height: 28px;
+	background-size: cover;
 }
 .notice .msg i.icon-ok {
-	background-position-x: 0px;
+	background-position-x: -2px;
 }
 .notice .msg i.icon-war {
-	background-position-x: -27px;
+	background-position-x: -34px;
 }
 .notice .msg i.icon-err {
-	background-position-x: -56px;
+	background-position-x: -65px;
 }
 .notice .msg p {
 	position: relative;

@@ -9,27 +9,42 @@ function button_yt(id){
 }
 
 function startVoice() {
-	const native = window.NativeSpeech;
+    const native = window.NativeSpeech;
+    const overlay = $(".rt .bg-cover");
 
-	if (typeof native?.startListening !== "function")
-		return msg("err", "Ses tanıma kullanılamıyor.");
+    if (typeof native?.startListening !== "function")
+        return msg("err", "Ses tanıma kullanılamıyor.");
 
-	window.onNativeSpeechResult = (state, text) => {
-		if (state === "permission") return msg("war", "Telefondan Mikrofon İznini Ver.");
-		if (state === "error") return msg("err", text);
-		if (state === "listening") return msg("ok", text);
+    window.onNativeSpeechResult = (state, text) => {
 
-		const input = $("#text");
+        if (state === "permission") {
+            //overlay?.classList.remove("active");
+            return msg("war", "Telefondan Mikrofon İznini Ver.");
+        }
 
-		if (input) {
-			input.value = text;
-			input.dispatchEvent(new Event("input", { bubbles: true }));
-		}
+        if (state === "error") {
+            overlay?.classList.remove("active");
+            return msg("err", text);
+        }
 
-		if (state === "final") msg("ok", "Konuşma algılandı");
-	};
+        if (state === "listening") {
+            overlay?.classList.add("active");
+            return //return msg("ok", text);
+        }
 
-	native.startListening();
+        const input = $("#text");
+
+        if (input) {
+            input.value = text;
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+
+        if (state === "final") {
+            overlay?.classList.remove("active");
+        }
+    };
+
+    native.startListening();
 }
 
 function sendToCar(id) {

@@ -1,17 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 180" fill="none" role="img" aria-label="Hareketli mavi mor ışık dalgası">
-<defs>
- <linearGradient id="wave" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#007dff" stop-opacity="0"/><stop offset=".22" stop-color="#00aaff"/><stop offset=".52" stop-color="#3f78ff"/><stop offset=".78" stop-color="#884bff"/><stop offset="1" stop-color="#7c39ff" stop-opacity="0"/></linearGradient>
- <filter id="blur" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="13"/></filter>
- <filter id="glow" x="-10%" y="-100%" width="120%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
-</defs>
-<g>
- <path id="shape" d="M0 96 C125 96 145 37 260 60 S420 142 535 107 S690 43 785 71 S930 110 1000 92" stroke="url(#wave)" stroke-width="19" opacity=".55" filter="url(#blur)"/>
- <path d="M0 96 C125 96 145 37 260 60 S420 142 535 107 S690 43 785 71 S930 110 1000 92" stroke="url(#wave)" stroke-width="5" opacity=".75" filter="url(#glow)"/>
- <path d="M0 96 C125 96 145 37 260 60 S420 142 535 107 S690 43 785 71 S930 110 1000 92" stroke="url(#wave)" stroke-width="1.8"/>
- <animateTransform attributeName="transform" type="translate" values="0 0;0 9;0 -6;0 0" dur="7s" repeatCount="indefinite"/>
- <animate attributeName="opacity" values=".75;1;.75" dur="5s" repeatCount="indefinite"/>
-</g>
-<path d="M0 102 C145 107 170 62 270 79 S420 127 535 99 S690 67 800 86 S940 106 1000 96" stroke="url(#wave)" stroke-width="1.2" opacity=".38">
- <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0 102 C145 107 170 62 270 79 S420 127 535 99 S690 67 800 86 S940 106 1000 96;M0 102 C145 65 170 113 270 85 S420 70 535 112 S690 112 800 79 S940 87 1000 96;M0 102 C145 107 170 62 270 79 S420 127 535 99 S690 67 800 86 S940 106 1000 96"/>
-</path>
-</svg>
+<svg viewBox="0 0 1000 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="1000" height="150"><style>
+svg{filter:drop-shadow(0 0 13px #2e76ff66) drop-shadow(0 0 8px #6583ff88)}
+.wave-main,.wave-secondary,.wave-haze{fill:none;stroke-linecap:round}
+.wave-main{stroke:url(#waveGradient);stroke-width:2.8;animation:waveMove 5.5s ease-in-out infinite alternate}
+.wave-secondary{stroke:url(#waveGradient);stroke-width:1.5;opacity:.55;animation:waveMove 7s ease-in-out infinite alternate-reverse}
+.wave-haze{stroke:url(#waveGradient);stroke-width:15;opacity:.22;filter:blur(11px);animation:waveMove 5.5s ease-in-out infinite alternate}
+@keyframes waveMove{0%{transform:translateY(-9px) scaleY(.76)}50%{transform:translateY(7px) scaleY(1.12)}100%{transform:translateY(-4px) scaleY(.85)}}
+@media(prefers-reduced-motion:reduce){.wave-main,.wave-secondary,.wave-haze{animation:none}}
+</style>
+        <defs><linearGradient id="waveGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0576ff" stop-opacity="0"/><stop offset=".2" stop-color="#00aaff"/><stop offset=".48" stop-color="#3375ff"/><stop offset=".75" stop-color="#8d4cff"/><stop offset="1" stop-color="#9049ff" stop-opacity="0"/></linearGradient></defs>
+        <path class="wave-haze" d="M0 76 C130 76 165 34 280 61 S445 122 560 87 S715 33 815 67 S935 81 1000 76"/>
+        <path class="wave-secondary" d="M0 83 C120 78 177 48 275 65 S445 112 550 91 S700 45 815 67 S945 84 1000 79"/>
+        <path class="wave-main" d="M0 76 C130 76 165 34 280 61 S445 122 560 87 S715 33 815 67 S935 81 1000 76"/>
+      </svg>

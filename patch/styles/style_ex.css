@@ -12,6 +12,14 @@
 	flex-shrink: 0;
 }
 
+[class^="icon-"].mid,
+[class*=" icon-"].mid {
+    width: 30px;
+    height: 30px;
+    background-size: 812.5px 30px;
+    background-position: calc(-2.5px - var(--icon-index) * 33.75px) 0;
+}
+
 /* 38px ikonlar: SVG oranına göre aynı boşluklar da büyür */
 [class^="icon-"].big, [class*=" icon-"].big {
 	width: 38px;

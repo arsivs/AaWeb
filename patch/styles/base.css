@@ -14,18 +14,19 @@
 	margin: 0;
 
 	font-family: 'Inter', sans-serif;
+	scrollbar-width: thin;
+	scrollbar-color: #20436a transparent;
 }
 
 /* Scroll Style Start */
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 7px;
 }
 ::-webkit-scrollbar-track {
-	background: #183554;
-	border-radius: 10px;
+	background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(90deg, #087cff, #42c0ff);
+	background: #20436a;
 	border-radius: 10px;
 }
 /* Scroll Style End */

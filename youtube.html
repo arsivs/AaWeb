@@ -52,10 +52,10 @@ window.addEventListener("autoxkey", function(event) {
 	<div class="lt">
 		<div class="form">
 		<form action="javascript:yt_search();" method="get">
-			<button type="button" onclick="startVoice();"><i class="icon-mic big"></i></button>
-			<input id="text" placeholder="Hadi aramaya başlayalım..!" type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
-			<button id="settings" type="button" onclick="menu_select('left');$('.yt_content').classList.add('set');"><i class="icon-settings"></i></button>
-			<button type="submit"><i class="icon-search big"></i></button>
+			<button id="voice" type="button" onclick="startVoice();"><i class="icon-mic big"></i></button>
+			<input id="text" placeholder="Şarkı, sanatçı veya video ara..." type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
+			<button id="settings" type="button" onclick="menu_select('left');$('.yt_content').classList.add('set');"><i class="icon-sliders mid"></i></button>
+			<button id="submit" type="submit"><i class="icon-search big"></i></button>
 		</form>
 		</div>
 		<div class="results"></div>

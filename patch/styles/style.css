@@ -3,8 +3,8 @@
 	flex-direction: row;
 	width: 100vw;
 	height: 100vh;
-	padding: 30px;
-	gap: 30px;
+	padding: 10px;
+	gap: 10px;
 }
 .yt_content .lt,
  .yt_content .rt {
@@ -27,78 +27,128 @@
 	flex-basis: 440px;
 }
 .yt_content .form {
-	padding: 9px;
+	padding: 10px 2px;
 }
 .yt_content .lt form {
 	display: flex;
-	flex-direction: row;
-	width: 100%;
-	height: 60px;
-	border-radius: 30px;
-	margin-bottom: 10px;
-	border: 2px solid #174477;
-	background: linear-gradient(100deg, #0c1d34, #09172a);
-	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
-	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	height: 50px;
+	align-items: center;
+	gap: 0 7px;
+	border-radius: 36px;
+	border: 1px solid #20BFFF;
+	background: linear-gradient(180deg, #071F3A 0%, #06172D 100%);
+	box-shadow: 0 0 5px rgba(32, 191, 255, 0.18), inset 0 0 8px rgba(0, 100, 200, 0.08);
+	overflow: visible;
 }
-.yt_content .lt button[type=button] {
-	flex-shrink: 0;
-	flex-basis: 60px;
-	color: #45b5ff;
-	font-size: 18px;
+.yt_content .lt form button {
 	cursor: pointer;
+}
+.yt_content .lt #voice,
+.yt_content .lt #submit {
+	flex-shrink: 0;
+	align-self: center;
+	width: 62px;
+	height: 62px;
+	margin-left: -2px;
+	border-radius: 50%;
+	border: 2px solid #20BFFF;
+	background: linear-gradient(180deg, #0A426D 0%, #082747 55%, #061B34 100%);
+	box-shadow: 0 0 8px rgba(32, 191, 255, 0.22), inset 0 0 12px rgba(32, 191, 255, 0.08);
+}
+.yt_content .lt #voice:hover,
+.yt_content .lt #submit:hover {
+	background: #0D4D7D;
+	box-shadow: 0 0 12px rgba(32, 191, 255, 0.40);
 }
 .yt_content .lt input {
 	flex-grow: 1;
-	color: inherit;
+	height: 30px;
+	color: var(--color);
 	font-size: 16px;
+	padding-left: 7px;
+	border-left: 2px solid var(--bg-border);
 }
 .yt_content .lt input::placeholder {
 	color: #7289a8;
 }
 .yt_content .lt #settings {
-	flex-basis: 40px;
+	flex-basis: 32px;
+	padding-right: 7px;
+	border-right: 2px solid var(--bg-border);
 }
-.yt_content .lt button[type=submit] {
-	flex-basis: 50px;
-	padding-right: 10px;
-	cursor: pointer;
+.yt_content .lt #submit {
+	margin-left: auto;
+	margin-right: -2px;
 }
 
 .results {
 	display: flex;
 	flex-direction: column;
 	gap: 10px 0;
-	padding: 0 9px;
+	padding: 0 7px;
+	margin-top: 10px;
 	overflow: auto;
 }
 .poster-card {
 	display: flex;
 	flex-direction: row;
-	padding: 5px;
+	align-items: center;
+	padding: 5px 9px;
 	gap: 7px;
 	cursor: pointer;
-	border-color: #244b73;
-	background: linear-gradient(110deg, #112b48, #0d2037);
-}
-.poster-card.active {
-	background: linear-gradient(110deg, #12375c, #0d2340);
-	border-color: #168cff;
-	box-shadow: inset 3px 0 0 #168cff, 0 4px 18px #07101f30;
+	border-radius: 30px;
+	border: 1px solid #123c65;
+	box-shadow: inset 0 0 17px #1261a514;
+	background: linear-gradient(100deg, #07284a, #051d39 75%, #071d36);
+	transition: background .2s, border-color .2s;
 }
 .poster-card:hover {
-	transform: translateY(-1px);
+	border-color: #42aaff;
+	background-color: #113c63;
+}
+.poster-card.active {
+    background: linear-gradient(
+        110deg,
+        #0B3457 0%,
+        #092B4C 55%,
+        #071F3A 100%
+    );
+
+    border: 1px solid rgba(32, 191, 255, 0.65);
+
+    box-shadow:
+        0 0 10px rgba(32, 191, 255, 0.12),
+        inset 0 0 12px rgba(32, 191, 255, 0.05);
 }
 .poster-card .image {
+	position: relative;
 	flex-shrink: 0;
-	align-content: center;
-	flex-basis: 110px;
-	height: 70px;
+	flex-basis: 100px;
+	height: 60px;
+	border-radius: 20px;
+	/*aspect-ratio: 16 / 9;*/
+	overflow: hidden;
 }
 .poster-card img {
 	display: block;
 	width: 100%;
 	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	transform: scale(1.25);
+}
+.poster-card > b {
+	position: absolute;
+	min-width: 46px;
+	right: 0;
+	bottom: 0;
+	background: #020914e8;
+	padding: 2px 14px 2px 7px;
+	border-radius: 12px 0 0 0;
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
 }
 .poster-card .info {
 	flex-grow: 1;
@@ -115,20 +165,52 @@
 	line-height: 1.6;
 	margin-top: 5px;
 }
-.poster-card .duration {
-	align-self: center;
-	margin-right: 2px;
+.poster-card .action {
+	display: grid;
+	place-items: center;
 	flex-shrink: 0;
 	flex-basis: 44px;
-	padding: 5px 0;
-	border: 1px solid #244568;
-	border-radius: 6px;
-	background: #10243b;
-	color: #8fcaff;
-	font-size: 12px;
-	font-weight: 500;
-	text-align: center;
-	font-variant-numeric: tabular-nums;
+	height: 44px;
+	border-radius: 50%;
+	background: radial-gradient(circle, #19568c, #0c315b);
+	box-shadow: inset 0 0 12px #2186d244;
+}
+.poster-card .action .bars {
+	display: none;
+	height: 44px;
+	align-items: center;
+	gap: 7px;
+	filter: drop-shadow(0 0 8px #00baff);
+}
+.action.active {
+	background: transparent;
+	box-shadow: none;
+}
+.action.active i {
+	display: none;
+}
+.action.active .bars {
+    display: flex;
+}
+.poster-card .action .bars b {
+	width: 5px;
+	height: 20px;
+	border-radius: 3px;
+	background: linear-gradient(#77f7ff, #00aeff);
+	animation: equalize .8s ease-in-out infinite alternate;
+}
+.poster-card .action .bars b:nth-child(2) {
+	height: 33px;
+	animation-delay: -.45s;
+}
+.poster-card .action .bars b:nth-child(3) {
+	height: 24px;
+	animation-delay: -.2s;
+}
+@keyframes equalize {
+  to {
+	transform: scaleY(0.4);
+  }
 }
 /* So Kisim Bitis */
 
@@ -186,7 +268,7 @@
 	display: none;
     flex-direction: row;
     flex-grow: 1;
-    gap: 30px;
+    gap: 10px;
 }
 .settings .lt {
 	gap: 12px;

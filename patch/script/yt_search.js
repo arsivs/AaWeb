@@ -39,6 +39,7 @@ yt_search = function(id = null) {
 		});
 	}else{
 		msg("war", "En az 3 karakter girin!");
+		$("#text").focus();
 	}
 }
 

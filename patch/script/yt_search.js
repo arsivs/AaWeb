@@ -26,7 +26,7 @@ yt_search = function(id = null) {
 	}
 	if(text != ""){
 		$(".icon-search").className = "icon-spin big";
-		//if (window.CarKeyboard) CarKeyboard.hideKeyboard();
+		if (window.CarKeyboard && $("#__aakb")) CarKeyboard.stopKeyboard();
 		getJSON("https://www.googleapis.com/youtube/v3/search?", params, function(err, data) {
 			if (err === null) {
 				if (id !== null)

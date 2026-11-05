@@ -1,14 +1,24 @@
-<svg viewBox="0 0 1000 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="1000" height="150"><style>
-svg{filter:drop-shadow(0 0 13px #2e76ff66) drop-shadow(0 0 8px #6583ff88)}
-.wave-main,.wave-secondary,.wave-haze{fill:none;stroke-linecap:round}
-.wave-main{stroke:url(#waveGradient);stroke-width:2.8;animation:waveMove 5.5s ease-in-out infinite alternate}
-.wave-secondary{stroke:url(#waveGradient);stroke-width:1.5;opacity:.55;animation:waveMove 7s ease-in-out infinite alternate-reverse}
-.wave-haze{stroke:url(#waveGradient);stroke-width:15;opacity:.22;filter:blur(11px);animation:waveMove 5.5s ease-in-out infinite alternate}
-@keyframes waveMove{0%{transform:translateY(-9px) scaleY(.76)}50%{transform:translateY(7px) scaleY(1.12)}100%{transform:translateY(-4px) scaleY(.85)}}
-@media(prefers-reduced-motion:reduce){.wave-main,.wave-secondary,.wave-haze{animation:none}}
-</style>
-        <defs><linearGradient id="waveGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0576ff" stop-opacity="0"/><stop offset=".2" stop-color="#00aaff"/><stop offset=".48" stop-color="#3375ff"/><stop offset=".75" stop-color="#8d4cff"/><stop offset="1" stop-color="#9049ff" stop-opacity="0"/></linearGradient></defs>
-        <path class="wave-haze" d="M0 76 C130 76 165 34 280 61 S445 122 560 87 S715 33 815 67 S935 81 1000 76"/>
-        <path class="wave-secondary" d="M0 83 C120 78 177 48 275 65 S445 112 550 91 S700 45 815 67 S945 84 1000 79"/>
-        <path class="wave-main" d="M0 76 C130 76 165 34 280 61 S445 122 560 87 S715 33 815 67 S935 81 1000 76"/>
-      </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="340" viewBox="0 0 560 340" fill="none">
+<defs>
+ <linearGradient id="ring" x1="105" y1="50" x2="452" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#00E8FF"/><stop offset=".55" stop-color="#087CFF"/><stop offset="1" stop-color="#A34DFF"/></linearGradient>
+ <linearGradient id="note" x1="235" y1="90" x2="345" y2="235" gradientUnits="userSpaceOnUse"><stop stop-color="#00F0FF"/><stop offset=".55" stop-color="#079AFF"/><stop offset="1" stop-color="#7C4CFF"/></linearGradient>
+ <linearGradient id="wave" x1="0" y1="0" x2="560" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#0969D5" stop-opacity="0"/><stop offset=".18" stop-color="#03CFFF"/><stop offset=".46" stop-color="#00E9FF"/><stop offset=".75" stop-color="#597AFF"/><stop offset=".9" stop-color="#A56BFF"/><stop offset="1" stop-color="#4E62FF" stop-opacity="0"/></linearGradient>
+ <filter id="glow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="2"/></filter>
+ <filter id="soft" x="-30%" y="-50%" width="160%" height="200%"><feGaussianBlur stdDeviation="2.4"/></filter>
+</defs>
+<!-- Clean concentric arcs; no enclosing frame -->
+<path d="M135 239 A145 145 0 1 1 425 239" stroke="url(#ring)" stroke-width="4" opacity=".10" filter="url(#glow)"/>
+<path d="M135 239 A145 145 0 1 1 425 239" stroke="url(#ring)" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M165 235 A115 115 0 1 1 395 235" stroke="url(#ring)" stroke-width="1.5" stroke-linecap="round" opacity=".85"/>
+<!-- Single fill, no border and no duplicated outline -->
+<path id="noteShape" d="M260 127 Q260 119 269 116 L346 94 Q354 92 354 101 L354 200 Q354 215 340 224 Q326 234 312 230 Q298 227 298 215 Q298 201 312 193 Q324 186 338 190 L338 130 L276 147 L276 220 Q276 235 262 244 Q248 254 234 250 Q220 247 220 235 Q220 221 234 213 Q246 206 260 210 Z" fill="url(#note)"/>
+
+
+<!-- Deliberately simple, layered sine waves -->
+<path id="mainWave" d="M0 270 C50 270 57 297 105 281 S173 230 220 261 S285 319 332 280 S392 242 430 269 S508 290 560 268" stroke="url(#wave)" stroke-width="2.1" stroke-linecap="round"/>
+<use href="#mainWave" stroke-width="5" opacity=".14" filter="url(#glow)"/>
+<path d="M0 275 C54 275 67 288 108 277 S177 243 221 268 S287 305 332 280 S393 252 432 275 S515 282 560 274" stroke="url(#wave)" stroke-width="1.25" opacity=".55"/>
+<path d="M0 265 C54 265 67 301 108 288 S177 219 221 255 S287 332 332 284 S393 232 432 263 S515 300 560 265" stroke="url(#wave)" stroke-width="1.1" opacity=".35"/>
+<!-- tiny grounding light, not a blurry reflection -->
+<path d="M105 324 H455" stroke="url(#wave)" stroke-width="1" opacity=".28"/>
+</svg>

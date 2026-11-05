@@ -176,6 +176,9 @@
 	background: url(../images/listening.svg) no-repeat center;
 	background-size: auto 65%;
 }
+.yt_content .rt .bg-cover.active {
+	display: block;
+}
 /* Sag Kisim Bitis */
 
 /* Ayarlar Baslangic */

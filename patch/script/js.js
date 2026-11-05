@@ -9,42 +9,42 @@ function button_yt(id){
 }
 
 function startVoice() {
-    const native = window.NativeSpeech;
-    const overlay = $(".rt .bg-cover");
+	const native = window.NativeSpeech;
+	const overlay = $(".rt .bg-cover");
 
-    if (typeof native?.startListening !== "function")
-        return msg("err", "Ses tanıma kullanılamıyor.");
+	if (typeof native?.startListening !== "function")
+		return msg("err", "Ses tanıma kullanılamıyor.");
 
-    window.onNativeSpeechResult = (state, text) => {
+	window.onNativeSpeechResult = (state, text) => {
 
-        if (state === "permission") {
-            //overlay?.classList.remove("active");
-            return msg("war", "Telefondan Mikrofon İznini Ver.");
-        }
+		if (state === "permission") {
+			overlay?.classList.remove("active");
+			return msg("war", "Telefondan Mikrofon İznini Ver.");
+		}
 
-        if (state === "error") {
-            overlay?.classList.remove("active");
-            return msg("err", text);
-        }
+		if (state === "error") {
+			overlay?.classList.remove("active");
+			return msg("err", text);
+		}
 
-        if (state === "listening") {
-            overlay?.classList.add("active");
-            return //return msg("ok", text);
-        }
+		if (state === "listening") {
+			overlay?.classList.add("active");
+			return;
+		}
 
-        const input = $("#text");
+		const input = $("#text");
 
-        if (input) {
-            input.value = text;
-            input.dispatchEvent(new Event("input", { bubbles: true }));
-        }
+		if (input) {
+			input.value = text;
+			input.dispatchEvent(new Event("input", { bubbles: true }));
+		}
 
-        if (state === "final") {
-            overlay?.classList.remove("active");
-        }
-    };
+		if (state === "final") {
+			overlay?.classList.remove("active");
+		}
+	};
 
-    native.startListening();
+	native.startListening();
 }
 
 function sendToCar(id) {

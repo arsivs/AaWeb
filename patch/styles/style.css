@@ -36,9 +36,12 @@
 	gap: 0 7px;
 	border-radius: 36px;
 	border: 1px solid #20BFFF;
-	background: #071F3A;
+	background: linear-gradient(180deg, #071F3A 0%, #06172D 100%);
 	box-shadow: 0 0 5px rgba(32, 191, 255, 0.18), inset 0 0 8px rgba(0, 100, 200, 0.08);
-	overflow: visible;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #071F3A !important;
 }
 .yt_content .lt form button {
 	cursor: pointer;

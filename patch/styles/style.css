@@ -31,17 +31,13 @@
 }
 .yt_content .lt form {
 	display: flex;
-	height: 50px;
+	height: 49px;
 	align-items: center;
 	gap: 0 7px;
 	border-radius: 36px;
-    border: 1px solid transparent;
-
-    background:
-        linear-gradient(180deg, #071F3A, #06172D) padding-box,
-        linear-gradient(#20BFFF, #20BFFF) border-box;
-
-    box-shadow: none;
+	border: 1px solid #20BFFF;
+	background: linear-gradient(180deg, #071F3A 0%, #06172D 100%);
+	box-shadow: 0 0 5px rgba(32, 191, 255, 0.18), inset 0 0 8px rgba(0, 100, 200, 0.08);
 }
 .yt_content .lt form button {
 	cursor: pointer;

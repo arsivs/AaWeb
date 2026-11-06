@@ -37,7 +37,7 @@
 	border-radius: 36px;
 	border: 1px solid #20BFFF;
 	background: linear-gradient(180deg, #071F3A 0%, #06172D 100%);
-	box-shadow: 0 0 5px rgba(32, 191, 255, 0.18), inset 0 0 8px rgba(0, 100, 200, 0.08);
+	box-shadow: none;
 	overflow: visible;
 }
 .yt_content .lt form button {
@@ -61,7 +61,12 @@
 	box-shadow: 0 0 12px rgba(32, 191, 255, 0.40);
 }
 .yt_content .lt input {
-    visibility: hidden !important;
+	flex-grow: 1;
+	height: 30px;
+	color: var(--color);
+	font-size: 16px;
+	padding-left: 7px;
+	border-left: 2px solid var(--bg-border);
 }
 .yt_content .lt input::placeholder {
 	color: #7289a8;

@@ -61,20 +61,20 @@
 	box-shadow: 0 0 12px rgba(32, 191, 255, 0.40);
 }
 .yt_content .lt input {
-	flex-grow: 1;
-	height: 30px;
-	color: var(--color);
-	font-size: 16px;
-	padding-left: 7px;
-	border-left: 2px solid var(--bg-border);
+    flex-grow: 1;
+    min-width: 0;
+    height: 30px;
+    color: var(--color);
+    font-size: 16px;
+    padding-left: 7px;
 
-    appearance: none;
-    -webkit-appearance: none;
     background: transparent;
     border: none;
+    border-left: 2px solid var(--bg-border);
     outline: none;
     box-shadow: none;
-    border-radius: 0;
+    appearance: none;
+    -webkit-appearance: none;
 }
 .yt_content .lt input::placeholder {
 	color: #7289a8;

@@ -95,11 +95,9 @@ const yt = {
 		this.index = currentIndex !== -1 ? currentIndex : -1;
 	},
 	// Duraklat / Oynat
-	toggle: () => {
-		if (!player) return;
-		player.getPlayerState() === YT.PlayerState.PLAYING
-			? player.pauseVideo()
-			: player.playVideo();
+	toggle() {
+		if (!player) return this.init(this.history[this.index < 0 ? 0 : this.index]);
+		player.getPlayerState() === YT.PlayerState.PLAYING ? player.pauseVideo() : player.playVideo();
 	},
 	// Sonraki video
 	next() {

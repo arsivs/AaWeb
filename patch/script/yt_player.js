@@ -58,7 +58,7 @@ const yt = {
 
 					if (state === YT.PlayerState.PLAYING) {
 						window.AutoXMedia?.setPlaying(true);
-						$(`[data-id="${id}"] .action`)?.classList.add("active");
+						$(`poster-card.active .action`)?.classList.add("active");
 					}
 
 					if ([YT.PlayerState.PAUSED,

@@ -58,14 +58,14 @@ const yt = {
 
 					if (state === YT.PlayerState.PLAYING) {
 						window.AutoXMedia?.setPlaying(true);
-						$(`[data-id="${id}"] .action`)?.classList.add("active");
+						//$(`[data-id="${id}"] .action`)?.classList.add("active");
 					}
 
 					if ([YT.PlayerState.PAUSED,
 					  YT.PlayerState.BUFFERING,
 					  YT.PlayerState.ENDED].includes(state)) {
 						window.AutoXMedia?.setPosition(event.target.getCurrentTime(), false);
-						$(`[data-id="${id}"] .action`)?.classList.remove("active");
+						//$(`[data-id="${id}"] .action`)?.classList.remove("active");
 					}
 
 					if (state === YT.PlayerState.ENDED) {

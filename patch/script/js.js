@@ -36,6 +36,7 @@ function startVoice() {
 
 		if (input) {
 			input.value = text;
+			yt_search();
 			input.dispatchEvent(new Event("input", { bubbles: true }));
 		}
 

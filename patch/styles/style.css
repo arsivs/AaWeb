@@ -181,14 +181,14 @@
 	gap: 7px;
 	filter: drop-shadow(0 0 8px #00baff);
 }
-.action.active {
+.poster-card.active .action {
 	background: transparent;
 	box-shadow: none;
 }
-.action.active i {
+.poster-card.active .action i {
 	display: none;
 }
-.action.active .bars {
+.poster-card.active .action .bars {
     display: flex;
 }
 .poster-card .action .bars b {

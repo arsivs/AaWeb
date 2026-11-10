@@ -1,0 +1,568 @@
+.yt_content {
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	height: 100vh;
+	padding: 10px;
+	gap: 10px;
+}
+.yt_content .lt,
+ .yt_content .rt {
+	padding: var(--bg-padding);
+	background: var(--panel);
+	border: 1px solid var(--bg-border);
+	border-radius: var(--bg-border-radius);
+	box-shadow: var(--panel-light);
+}
+.yt_content.set > .lt,
+.yt_content.set > .rt {
+	display: none;
+}
+
+/* Sol Kisim Baslangic */
+.yt_content .lt {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	flex-basis: 440px;
+}
+.max_size .yt_content .lt,
+.yt_content.fullscreen .lt {
+	display: none;
+}
+.yt_content .form {
+	padding: 10px 2px;
+}
+.yt_content .lt form {
+	display: flex;
+	height: 50px;
+	align-items: center;
+	gap: 0 7px;
+	border-radius: 36px;
+	border: 1px solid #20BFFF;
+	background: linear-gradient(180deg, #071F3A 0%, #06172D 100%);
+	box-shadow: 0 0 5px rgba(32, 191, 255, 0.18), inset 0 0 8px rgba(0, 100, 200, 0.08);
+}
+.yt_content .lt form button {
+	cursor: pointer;
+}
+.yt_content .lt #voice,
+.yt_content .lt #submit {
+	flex-shrink: 0;
+	align-self: center;
+	width: 62px;
+	height: 62px;
+	margin-left: -2px;
+	border-radius: 50%;
+	border: 2px solid #20BFFF;
+	background: linear-gradient(180deg, #0A426D 0%, #082747 55%, #061B34 100%);
+	box-shadow: 0 0 8px rgba(32, 191, 255, 0.22), inset 0 0 12px rgba(32, 191, 255, 0.08);
+}
+.yt_content .lt #voice:hover,
+.yt_content .lt #submit:hover {
+	background: #0D4D7D;
+	box-shadow: 0 0 12px rgba(32, 191, 255, 0.40);
+}
+.yt_content .lt input {
+	flex-grow: 1;
+	height: 30px;
+	color: var(--color);
+	font-size: 16px;
+	padding-left: 7px;
+	border-left: 2px solid var(--bg-border);
+}
+.yt_content .lt input::placeholder {
+	color: #7289a8;
+}
+.yt_content .lt #settings {
+	flex-basis: 32px;
+	padding-right: 7px;
+	border-right: 2px solid var(--bg-border);
+}
+.yt_content .lt #submit {
+	margin-left: auto;
+	margin-right: -2px;
+}
+
+.results {
+	display: flex;
+	flex-direction: column;
+	gap: 10px 0;
+	padding: 0 7px;
+	margin-top: 10px;
+	overflow: auto;
+}
+.poster-card {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 5px 9px;
+	gap: 7px;
+	cursor: pointer;
+	border-radius: 30px;
+	border: 1px solid #123c65;
+	box-shadow: inset 0 0 17px #1261a514;
+	background: linear-gradient(100deg, #07284a, #051d39 75%, #071d36);
+	transition: background .2s, border-color .2s;
+}
+.poster-card:hover {
+	border-color: #42aaff;
+	background-color: #113c63;
+}
+.poster-card.active {
+    background: linear-gradient(
+        110deg,
+        #0B3457 0%,
+        #092B4C 55%,
+        #071F3A 100%
+    );
+
+    border: 1px solid rgba(32, 191, 255, 0.65);
+
+    box-shadow:
+        0 0 10px rgba(32, 191, 255, 0.12),
+        inset 0 0 12px rgba(32, 191, 255, 0.05);
+}
+.poster-card .image {
+	position: relative;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	height: 60px;
+	border-radius: 20px;
+	/*aspect-ratio: 16 / 9;*/
+	overflow: hidden;
+}
+.poster-card img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	transform: scale(1.25);
+}
+.poster-card > b {
+	position: absolute;
+	min-width: 46px;
+	right: 0;
+	bottom: 0;
+	background: #020914e8;
+	padding: 2px 14px 2px 7px;
+	border-radius: 12px 0 0 0;
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+}
+.poster-card .info {
+	flex-grow: 1;
+	align-self: center;
+}
+.poster-card h3 {
+	font-size: 16px;
+	max-height: 42px;
+	overflow: hidden;
+}
+.poster-card p {
+	color: var(--color-muted);
+	font-size: 12px;
+	line-height: 1.6;
+	margin-top: 5px;
+}
+.poster-card .action {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	flex-basis: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: radial-gradient(circle, #19568c, #0c315b);
+	box-shadow: inset 0 0 12px #2186d244;
+}
+.poster-card .action .bars {
+	display: none;
+	height: 44px;
+	align-items: center;
+	gap: 7px;
+	filter: drop-shadow(0 0 8px #00baff);
+}
+.action.active {
+	background: transparent;
+	box-shadow: none;
+}
+.action.active i {
+	display: none;
+}
+.action.active .bars {
+    display: flex;
+}
+.poster-card .action .bars b {
+	width: 5px;
+	height: 20px;
+	border-radius: 3px;
+	background: linear-gradient(#77f7ff, #00aeff);
+	animation: equalize .8s ease-in-out infinite alternate;
+}
+.poster-card .action .bars b:nth-child(2) {
+	height: 33px;
+	animation-delay: -.45s;
+}
+.poster-card .action .bars b:nth-child(3) {
+	height: 24px;
+	animation-delay: -.2s;
+}
+@keyframes equalize {
+  to {
+	transform: scaleY(0.4);
+  }
+}
+
+.history-haad {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px 0;
+	color: #8bbce9;
+	font-size: 14px;
+}
+.history-haad b {
+	cursor: pointer;
+	font-weight: normal;
+}
+.history-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #10233a;
+	border: 1px solid #244361;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.history-item::before {
+	content: "";
+	background: url(../images/icons.svg) no-repeat;
+	background-size: 400px 18px;
+	background-position: -282px 0px;
+	width: 18px;
+	height: 18px;
+	margin-left: 15px;
+	flex-shrink: 0;
+}
+.history-item span {
+	flex-shrink: 0;
+	padding: 12px 8px;
+	font-size: 14px;
+}
+.history-item span:first-child {
+	flex-grow: 1;
+}
+.history-item span:last-child {
+	margin-right: 7px;
+	border-radius: 12px;
+	color: #7893b3;
+	transition: .2s ease;
+	padding: 5px 14px;
+}
+.history-item span:last-child:hover {
+	background: #168cff20;
+	color: #42b5ff;
+}
+/* So Kisim Bitis */
+
+/* Sag Kisim Baslangic */
+.yt_content .rt {
+	position: relative;
+	max-width: var(--max-size);
+	flex-grow: 1;
+	padding: 18px;
+	overflow: hidden;
+}
+.yt_content.fullscreen .rt {
+	padding: 0;
+}
+.yt_content #player {
+	width: 100%;
+	height: 100%;
+	align-content: center;
+	text-align: center;
+}
+.yt_content .rt.fullscreen #player {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	border: 0;
+}
+.yt_content .rt #player img {
+	display: block;
+	width: 50%;
+	max-width: 380px;
+	min-width: 180px;
+	height: auto;
+	margin: 0 auto;
+}
+.yt_content .rt #player p {
+	padding: 0 28px;
+	color: #a9c9ed;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.9;
+	letter-spacing: 0.3px;
+	background: linear-gradient(135deg,#a9c9ed 0%,#8b9dff 50%,#c3a6ff 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(0 0 14px #4b8dff20);
+}
+
+.yt_content .rt .bg-cover {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: var(--panel);
+}
+.yt_content .rt .bg-cover::before {
+	content: "";
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background: url(../images/listening.svg) no-repeat center;
+	background-size: auto 65%;
+}
+.yt_content .rt .bg-cover.active {
+	display: block;
+}
+/* Sag Kisim Bitis */
+
+/* Ayarlar Baslangic */
+.settings {
+	display: none;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 10px;
+}
+.settings .lt {
+	gap: 12px;
+}
+.settings button, .settings select {
+	cursor: pointer;
+}
+.yt_content.set .settings {
+	display: flex;
+}
+
+/* Sol Kisim Start */
+.settings .lt .head {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 12px;
+}
+.settings .lt .close {
+	width: 54px;
+	height: 54px;
+	display: grid;
+	place-items: center;
+	border: 1px solid #225a8c;
+	background: #0b1c32;
+	border-radius: 50%;
+	transition: .2s;
+}
+.settings .lt .close:hover {
+	background: #123b62;
+	box-shadow: 0 0 15px #158dff44;
+}
+.settings .lt .h2 {
+	margin: 0;
+	font-size: 26px;
+	font-weight: 650;
+}
+.settings .lt .nav {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	padding: 9px;
+	overflow-x: auto;
+}
+.settings .lt .item {
+	width: 100%;
+	min-height: 62px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 15px;
+	border: 1px solid transparent;
+	border-radius: 14px;
+	background: transparent;
+	text-align: left;
+	color: #b4c8e6;
+	font-size: 18px;
+	transition: .2s;
+}
+.settings .lt .item.active {
+	box-shadow: rgba(39, 157, 255, 0.333) 0px 0px 0px 1px inset, rgba(22, 139, 255, 0.267) 0px 0px 16px;
+	color: rgb(255, 255, 255);
+	background: linear-gradient(100deg, rgb(21, 69, 118), rgb(16, 44, 75));
+	border-color: rgb(39, 157, 255);
+}
+.settings .lt .item.active::after {
+	content: "";
+	width: 24px;
+	height: 24px;
+	margin: 0 0 0 auto;
+	background: url(../images/icons.svg) no-repeat;
+	background-size: cover;
+	background-position: -568px 0;
+}
+.settings .lt .item:hover {
+	background: #15304d;
+}
+/* Sol Kisim End */
+
+/* Sag Kisim Start */
+.settings .rt {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	padding: 26px 14px;
+}
+.settings .rt .head {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 0 14px;
+}
+.settings .rt .head h2 {
+	margin: 0 0 5px;
+	font-size: 27px;
+}
+.settings .rt .head p {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 15px;
+}
+
+.settings .rt .section {
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+	padding: 0 14px;
+	overflow-x: auto;
+}
+.settings .rt .row {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	min-height: 72px;
+	padding: 12px 18px;
+	border: 1px solid #214363;
+	border-radius: 17px;
+	background: linear-gradient(100deg, #10253e, #0b1b31);
+}
+.settings .rt .row .label {
+	flex: 1;
+	min-width: 0;
+}
+.settings .rt .row strong {
+	display: block;
+	font-size: 17px;
+	font-weight: 500;
+	margin-bottom: 3px;
+}
+.settings .rt .row small {
+	display: block;
+	color: var(--color-muted);
+	font-size: 13px;
+	line-height: 1.35;
+}
+.settings .rt .row select {
+	font-size: 16px;
+	min-width: 170px;
+	max-width: 45%;
+	color: var(--color);
+	background: #0c2039;
+	border: 1px solid #315c85;
+	border-radius: 12px;
+
+	appearance: none;
+	padding: 10px 35px 10px 12px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+}
+.settings .rt .row option {
+	background: #0c2039;
+	color: #fff;
+}
+
+.settings .rt .stepper {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	border: 1px solid #315c85;
+	border-radius: 12px;
+	padding: 4px;
+}
+.settings .stepper button {
+	width: 38px;
+	height: 38px;
+	border: 0;
+	border-radius: 9px;
+	background: #203d5f;
+	font-size: 23px;
+	color: var(--color);
+}
+.settings .stepper button:hover {
+	background: #2469aa;
+}
+.settings .stepper output {
+	min-width: 22px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.settings .rt .switch {
+	position: relative;
+	display: inline-flex;
+	flex-shrink: 0;
+	width: 60px;
+	height: 34px;
+}
+.settings .rt .switch input {
+	position: absolute;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+.settings .rt .switch span {
+	width: 100%;
+	border-radius: 40px;
+	background: #29405b;
+	transition: .2s;
+	box-shadow: inset 0 0 0 1px #45617d;
+}
+.settings .rt .switch input:checked+span {
+	background: #167bf2;
+	box-shadow: 0 0 12px #167bf244;
+}
+.settings .rt .switch span:before {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: #eaf3ff;
+	cursor: pointer;
+	transition: .2s;
+}
+.settings .rt .switch input:checked+span:before {
+	transform: translateX(26px);
+}
+/* Sag Kisim End */
+
+/* Ayarlar Bitis */

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoX Andorid Auto</title>
+<link rel="stylesheet" href="patch/styles/config.css">
+<script src="patch/script/js.js" type="text/javascript" defer></script>
+<style type="text/css">
+
+</style>
+<script type="application/javascript">
+window.addEventListener("autoxkey", function (event) {
+	const d = event.detail;
+	const keyCode = d.keyCode;
+
+	if (!ytReady) return; // YouTube hazır değilse hiçbir tuş çalışmaz
+
+	switch (keyCode) {
+		case 87: // Sonraki
+			if (d.action === "press") {
+				yt.next();
+				msg("ok", "Sonraki");
+			} else if (d.action === "hold") {
+				const dur = yt.duration();
+				let hedef = yt.time() + d.stepSec;
+				if (dur > 0) hedef = Math.min(hedef, dur - 1); // sona taşıp videoyu bitirmesin
+				yt.seek(hedef);
+				msg("ok", "+" + d.stepSec + " sn");
+			} else if (d.action === "double") {
+				$(".yt_content")?.classList.add("fullscreen");
+			}
+			break;
+
+		case 88: // Önceki
+			if (d.action === "press") {
+				yt.prev();
+				msg("ok", "Önceki");
+			} else if (d.action === "hold") {
+				yt.seek(Math.max(0, yt.time() - d.stepSec));
+				msg("ok", "-" + d.stepSec + " sn");
+			} else if (d.action === "double") {
+				$(".yt_content")?.classList.remove("fullscreen");
+			}
+			break;
+
+		case 126:
+			if (d.action === "press") {
+				yt.toggle();
+				msg("ok", "Oynat");
+			}
+			break;
+
+		case 127:
+			if (d.action === "press") {
+				yt.toggle();
+				msg("ok", "Duraklat");
+			}
+			break;
+
+		default:
+			if (d.action === "press") msg("ok", "Diğer tuş:" + keyCode);
+			break;
+	}
+});
+
+
+window.addEventListener("autoxareachange", function (e) {
+	const a = e.detail;
+	const h = a.hostArea;
+
+	const active = a.split === true || a.width < 500;
+	$("body").classList.toggle("max_size", a.split === true || a.width < 500);
+	active ? $("body").style.setProperty("--max-size", `${a.width}px`) : $("body").style.removeProperty("--max-size");
+
+	let hata =
+	"Bölünmüş mü: " + a.split + "\n" +
+	"Kullanılabilir alan: " + a.width + " x " + a.height + "\n" +
+	"Sol: " + a.left + "\n" +
+	"Üst: " + a.top + "\n" +
+	"Yüzey genişliği: " + a.surfaceWidth + "\n" +
+	"Yüzey yüksekliği: " + a.surfaceHeight + "\n" +
+	"Araç ham alanı: " + (h
+	  ? h.left + ", " + h.top + ", " + h.right + ", " + h.bottom
+	  : "yok");
+	//$(".results").innerText = hata;
+});
+</script>
+</head>
+
+<body>
+
+<div class="yt_content">
+	<div class="lt">
+		<div class="form">
+		<form action="javascript:yt_search();" method="get">
+			<button id="voice" type="button" onclick="startVoice();"><i class="icon-mic big"></i></button>
+			<input id="text" placeholder="Şarkı, sanatçı veya video ara..." type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
+			<button id="settings" type="button" onclick="menu_select('left');$('.yt_content').classList.add('set');"><i class="icon-sliders mid"></i></button>
+			<button id="submit" type="submit"><i class="icon-search big"></i></button>
+		</form>
+		</div>
+		<div class="results"></div>
+	</div>
+
+	<div class="rt">
+		<div id="player">
+			<img src="patch/images/wave.svg">
+			<p>Zihninde çalan o melodiyi, içinden mırıldandığın o ilk şarkıyı buraya bırak; ritmi başlatalım...</p>
+		</div>
+		<div class="notice"></div>
+		<div class="bg-cover"></div>
+	</div>
+
+	<div class="settings">
+		<div class="lt"></div>
+		<div class="rt"></div>
+	</div>
+</div>
+
+</body>
+</html>

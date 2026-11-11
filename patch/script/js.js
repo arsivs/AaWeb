@@ -2,6 +2,12 @@ const $ = s => document.querySelector(s);
 
 window.onload = () => {
 	yt_historyRender();
+
+	const loading = $('.loading');
+	loading.style.animation = "fade-out .400s forwards";
+	loading.onanimationend = (e) => {
+		e.target.remove();
+	};
 };
 
 function button_yt(id){
@@ -72,11 +78,10 @@ function yt_historyRender() {
 	};
 
 	history.forEach((item, index) => {
-		box.insertAdjacentHTML("beforeend", `
-			<p class="history-item">
-				<span class="history-text">${item.q}</span>
-				<span class="history-sil">✕</span>
-			</p>`);
+		box.insertAdjacentHTML("beforeend", `<p class="history-item">
+			<span class="history-text">${item.q}</span>
+			<span class="history-sil">✕</span>
+		</p>`);
 
 		const el = box.lastElementChild;
 		el.querySelector("span").onclick = () => yt_historyLoad(index);

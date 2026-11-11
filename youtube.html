@@ -7,7 +7,70 @@
 <link rel="stylesheet" href="patch/styles/config.css">
 <script src="patch/script/js.js" type="text/javascript" defer></script>
 <style type="text/css">
-
+.loading {
+position: fixed;
+background-color: #16161a;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+text-align: center;
+z-index: 99;
+}
+.typed{
+display: inline-flex;
+}
+.typed .out{
+position: relative;
+font-family: monospace;
+font-size: 1.6rem;
+width: 0;
+padding-right: 3px;
+color: #d1d0c5;
+white-space: nowrap;
+overflow: hidden;
+animation: typed 2.75s infinite;
+}
+.typed .out:after {
+content: "";
+position: absolute;
+top: 0;
+right: 0px;
+width: 3px;
+height: 100%;
+background-color: #646669;
+border-radius: 2px;
+}
+div.loader {
+position: relative;
+margin: 150px auto 40px auto;
+width: 50px;
+height: 50px;
+}
+div.loader::before, div.loader::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+border: 4px solid #646669;
+animation: loader 1s infinite linear;
+}
+div.loader::after {
+margin: 10px;
+animation-direction: reverse;
+}
+@keyframes typed {
+0%, 100% { width: 0; }
+35%, 65% { width: 100%; }
+}
+@keyframes loader {
+0%, 100% { clip-path: inset(91% 0 0 0); }
+25% { clip-path: inset(0 91% 0 0); }
+50% { clip-path: inset(0 0 91% 0); }
+75% { clip-path: inset(0 0 0 91%); }
+}
 </style>
 <script type="application/javascript">
 window.addEventListener("autoxkey", function (event) {
@@ -118,5 +181,9 @@ window.addEventListener("autoxareachange", function (e) {
 	</div>
 </div>
 
+<div class='loading'>
+	<div class='loader'></div>
+	<div class='typed'><div class='out'>AutoX</div></div>
+</div>
 </body>
 </html>

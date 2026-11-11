@@ -145,3 +145,8 @@
 	100%      { transform: translate3d(0, calc(100% + 15px), 0); opacity: 0; }
 }
 /* Notification End */
+
+@keyframes fade-out {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}

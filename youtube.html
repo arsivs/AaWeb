@@ -85,13 +85,13 @@ window.addEventListener("autoxkey", function (event) {
 				yt.next();
 				msg("ok", "Sonraki");
 			} else if (d.action === "hold") {
+				$(".yt_content")?.classList.add("fullscreen");
+			} else if (d.action === "double") {
 				const dur = yt.duration();
 				let hedef = yt.time() + d.stepSec;
 				if (dur > 0) hedef = Math.min(hedef, dur - 1); // sona taşıp videoyu bitirmesin
 				yt.seek(hedef);
 				msg("ok", "+" + d.stepSec + " sn");
-			} else if (d.action === "double") {
-				$(".yt_content")?.classList.add("fullscreen");
 			}
 			break;
 
@@ -100,10 +100,10 @@ window.addEventListener("autoxkey", function (event) {
 				yt.prev();
 				msg("ok", "Önceki");
 			} else if (d.action === "hold") {
+				$(".yt_content")?.classList.remove("fullscreen");
+			} else if (d.action === "double") {
 				yt.seek(Math.max(0, yt.time() - d.stepSec));
 				msg("ok", "-" + d.stepSec + " sn");
-			} else if (d.action === "double") {
-				$(".yt_content")?.classList.remove("fullscreen");
 			}
 			break;
 

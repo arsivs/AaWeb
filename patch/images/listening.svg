@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Dinleniyor animasyonu">
+<defs>
+ <radialGradient id="halo"><stop stop-color="#397cff" stop-opacity=".24"/><stop offset=".65" stop-color="#654bff" stop-opacity=".09"/><stop offset="1" stop-color="#654bff" stop-opacity="0"/></radialGradient>
+ <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00c5ff"/><stop offset=".5" stop-color="#4285ff"/><stop offset="1" stop-color="#aa59ff"/></linearGradient>
+ <linearGradient id="mic" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9feaff"/><stop offset=".55" stop-color="#5b9bff"/><stop offset="1" stop-color="#bb79ff"/></linearGradient>
+ <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<style>
+ .pulse{transform-origin:300px 300px;animation:pulse 3s ease-out infinite;fill:none;stroke:url(#ring);stroke-width:2.5}
+ .p2{animation-delay:1s}.p3{animation-delay:2s}
+ .core{transform-origin:300px 300px;animation:breathe 2.2s ease-in-out infinite alternate}
+ .orb{animation:orb 4s ease-in-out infinite alternate}
+ @keyframes pulse{0%{transform:scale(.52);opacity:0}18%{opacity:.85}85%{opacity:.15}100%{transform:scale(1.35);opacity:0}}
+ @keyframes breathe{from{transform:scale(.96)}to{transform:scale(1.055)}}
+ @keyframes orb{from{opacity:.65}to{opacity:1}}
+ @media(prefers-reduced-motion:reduce){*{animation:none!important}.pulse{opacity:.25}}
+</style>
+<circle cx="300" cy="300" r="240" fill="url(#halo)" class="orb"/>
+<circle cx="300" cy="300" r="182" class="pulse"/>
+<circle cx="300" cy="300" r="182" class="pulse p2"/>
+<circle cx="300" cy="300" r="182" class="pulse p3"/>
+<g class="core">
+ <circle cx="300" cy="300" r="116" fill="#102744" fill-opacity=".86" stroke="url(#ring)" stroke-opacity=".65" stroke-width="2"/>
+ <circle cx="300" cy="300" r="101" fill="none" stroke="#62a8ff" stroke-opacity=".17" stroke-width="8"/>
+ <g fill="none" stroke="url(#mic)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+  <rect x="277" y="239" width="46" height="91" rx="23"/>
+  <path d="M257 296v16a43 43 0 0 0 86 0v-16M300 355v25M274 380h52"/>
+ </g>
+</g>
+</svg>

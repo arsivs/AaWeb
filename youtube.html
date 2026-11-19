@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoX Andorid Auto</title>
+<link rel="stylesheet" href="patch/styles/config.css">
+<script src="patch/script/js.js" type="text/javascript" defer></script>
+<style type="text/css">
+.loading {
+position: fixed;
+background-color: #16161a;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+text-align: center;
+z-index: 99;
+}
+.typed{
+display: inline-flex;
+}
+.typed .out{
+position: relative;
+font-family: monospace;
+font-size: 1.6rem;
+width: 0;
+padding-right: 3px;
+color: #d1d0c5;
+white-space: nowrap;
+overflow: hidden;
+animation: typed 2.75s infinite;
+}
+.typed .out:after {
+content: "";
+position: absolute;
+top: 0;
+right: 0px;
+width: 3px;
+height: 100%;
+background-color: #646669;
+border-radius: 2px;
+}
+div.loader {
+position: relative;
+margin: 150px auto 40px auto;
+width: 50px;
+height: 50px;
+}
+div.loader::before, div.loader::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+border: 4px solid #646669;
+animation: loader 1s infinite linear;
+}
+div.loader::after {
+margin: 10px;
+animation-direction: reverse;
+}
+@keyframes typed {
+0%, 100% { width: 0; }
+35%, 65% { width: 100%; }
+}
+@keyframes loader {
+0%, 100% { clip-path: inset(91% 0 0 0); }
+25% { clip-path: inset(0 91% 0 0); }
+50% { clip-path: inset(0 0 91% 0); }
+75% { clip-path: inset(0 0 0 91%); }
+}
+</style>
+<script type="application/javascript">
+// Araç / medya tuşları
+window.addEventListener("autoxkey", (e) => handleKey(e.detail));
+
+// PC tuşu -> keyCode
+window.addEventListener("keydown", (e) => {
+	if (e.target.matches("input, textarea, [contenteditable]")) return;
+	if (e.repeat) return;
+
+	// Bilinen tuşlar autoxkey ile aynı keyCode'a çevrilir, bilinmeyenler kendi keyCode'unu taşır
+	const map = { ArrowRight: 87, ArrowLeft: 88, MediaPlayPause: 126, " ": 126 };
+	const code = map[e.key] ?? e.keyCode;
+	handleKey({ keyCode: code, action: "press", stepSec: 10, label: e.key === " " ? "Boşluk" : e.key });
+});
+
+// Tuş işlemleri
+function handleKey(d) {
+	const keyCode = d.keyCode;
+	if (!ytReady) return;
+
+	switch (keyCode) {
+		case 85: // Oynat/Duraklat
+			$(".yt_content")?.classList.toggle("fullscreen");
+			break;
+		case 87: // Sonraki
+			if (d.action === "press") {
+				yt.next();
+				msg("ok", "Sonraki");
+			} else if (d.action === "double") {
+				const dur = yt.duration();
+				let hedef = yt.time() + d.stepSec;
+				if (dur > 0) hedef = Math.min(hedef, dur - 1);
+				yt.seek(hedef);
+				msg("ok", "+" + d.stepSec + " sn");
+			} else if (d.action === "hold") {
+				$(".yt_content")?.classList.add("fullscreen");
+			}
+			break;
+
+		case 88: // Önceki
+			if (d.action === "press") {
+				yt.prev();
+				msg("ok", "Önceki");
+			} else if (d.action === "double") {
+				yt.seek(Math.max(0, yt.time() - d.stepSec));
+				msg("ok", "-" + d.stepSec + " sn");
+			} else if (d.action === "hold") {
+				$(".yt_content")?.classList.remove("fullscreen");
+			}
+			break;
+
+		case 126:
+			if (d.action === "press") {
+				yt.toggle();
+				msg("ok", "Oynat");
+			}
+			break;
+
+		case 127:
+			if (d.action === "press") {
+				yt.toggle();
+				msg("ok", "Duraklat");
+			}
+			break;
+
+		default:
+			if (d.action === "press") msg("ok", "Diğer tuş:" + keyCode);
+			break;
+	}
+}
+</script>
+</head>
+
+<body>
+
+<div class="yt_content">
+	<div class="lt">
+		<div class="form">
+		<form action="javascript:yt_search();" method="get">
+			<button id="voice" type="button" onclick="startVoice();"><i class="icon-mic big"></i></button>
+			<input id="text" placeholder="Şarkı, sanatçı veya video ara..." type="text" autocomplete="off" onfocus="if (window.CarKeyboard) CarKeyboard.showKeyboard();" value=""/>
+			<button id="settings" type="button" onclick="menu_select('left');$('.yt_content').classList.add('set');"><i class="icon-sliders mid"></i></button>
+			<button id="submit" type="submit"><i class="icon-search big"></i></button>
+		</form>
+		</div>
+		<div class="results"></div>
+	</div>
+
+	<div class="rt">
+		<div id="player">
+			<img src="patch/images/wave.svg">
+			<p>Zihninde çalan o melodiyi, içinden mırıldandığın o ilk şarkıyı buraya bırak; ritmi başlatalım...</p>
+		</div>
+		<div class="notice"></div>
+		<div class="bg-cover"></div>
+	</div>
+
+	<div class="settings">
+		<div class="lt"></div>
+		<div class="rt"></div>
+	</div>
+</div>
+
+<div class='loading'>
+	<div class='loader'></div>
+	<div class='typed'><div class='out'>AutoX</div></div>
+</div>
+</body>
+</html>

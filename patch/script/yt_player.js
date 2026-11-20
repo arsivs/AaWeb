@@ -61,6 +61,9 @@ const yt = {
 						event.target.playVideo();
 						event.target.setVolume(100);
 					}
+					$(".yt_content .rt")?.addEventListener("click", () => {
+						yt.controls(event.target.getPlayerState());
+					});
 				},
 				onStateChange: (event) => {
 					const state = event.data;

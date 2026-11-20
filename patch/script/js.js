@@ -67,7 +67,9 @@ function yt_sonucKaydet() {
 
 function yt_historyRender() {
 	const history = Ayarlar.get("sonAramalar") || [];
-	const box = $(".results"); if (!box || !history.length) return;
+	const box = $(".results");
+	if (!box) return;
+	if (!history.length) box.innerHTML = "";
 
 	box.innerHTML = `<p class="history-haad">Son Aramalar<b>Tümünü Temizle</b></p>`;
 	box.querySelector(".history-haad b").onclick = (e) => {
@@ -79,6 +81,7 @@ function yt_historyRender() {
 
 	history.forEach((item, index) => {
 		box.insertAdjacentHTML("beforeend", `<p class="history-item">
+			<i class="icon-clock min"></i>
 			<span class="history-text">${item.q}</span>
 			<span class="history-sil">✕</span>
 		</p>`);

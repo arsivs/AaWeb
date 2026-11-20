@@ -1,13 +1,15 @@
 ﻿let player, ytReady = false;
 
 function onYouTubeIframeAPIReady() {
-    ytReady = true;
+	ytReady = true;
 }
 
 const yt = {
 	history: [],
 	index: -1,
 	currentId: null,
+	controlTimer: null,
+	progressTimer: null,
 
 	init(id) {
 		if (!ytReady) return msg("err", "YouTube API henüz hazır değil");
@@ -62,6 +64,7 @@ const yt = {
 				},
 				onStateChange: (event) => {
 					const state = event.data;
+					yt.controls(state);
 
 					if (state === YT.PlayerState.PLAYING) {
 						window.AutoXMedia?.setPlaying(true);
@@ -115,6 +118,30 @@ const yt = {
 	prev() {
 		if (this.index <= 0) return;
 		this.init(this.history[this.index - 1]);
+	},
+	// Control Bar alanı
+	controls(state) {
+		const box = $(".p_control");
+		if (!box) return;
+
+		clearTimeout(this.controlTimer);
+		clearInterval(this.progressTimer);
+		box.classList.add("active");
+
+		const update = () => {
+		    const duration = player?.getDuration() || 0;
+		    document.documentElement.style.setProperty(
+				"--progress",
+				duration ? player.getCurrentTime() / duration * 100 : 0
+			);
+		};
+
+		update();
+
+		if (state === YT.PlayerState.PLAYING) {
+			this.controlTimer = setTimeout(() => box.classList.remove("active"), 5000);
+			this.progressTimer = setInterval(update, 250);
+		}
 	},
 
 	play: () => player?.playVideo(),

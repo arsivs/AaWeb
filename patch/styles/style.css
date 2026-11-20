@@ -340,6 +340,7 @@
 	height: 7px;
 	background: #24425e;
 	border-radius: 20px;
+	cursor: pointer;
 	overflow: hidden;
 }
 .p_control .progress::before {

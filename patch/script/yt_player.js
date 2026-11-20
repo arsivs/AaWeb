@@ -62,24 +62,9 @@ const yt = {
 		const playing = state === YT.PlayerState.PLAYING;
 		clearInterval(this.progressTimer);
 		this.progress();
-		if (playing) {
-			this.showControls();
-			this.ui.overlay.classList.add('block');
-		} else {
-			this.ui.control?.classList.remove('active');
-			this.ui.overlay.classList.remove('block');
-		}
+		this.showControls(state);
+		this.ui.overlay?.classList.toggle('block', playing);
 		this.ui.playIcon?.classList.toggle('icon-pause', playing);
-
-		if (playing) {
-			window.AutoXMedia?.setPlaying(true);
-			$('.poster-card.active .action')?.classList.add('active');
-			this.disableCaptions();
-			this.progressTimer = setInterval(() => this.progress(), 250);
-		} else if ([YT.PlayerState.PAUSED, YT.PlayerState.BUFFERING, YT.PlayerState.ENDED].includes(state)) {
-			window.AutoXMedia?.setPosition(e.target.getCurrentTime(), false);
-			$('.action.active')?.classList.remove('active');
-		}
 	},
 
 	disableCaptions() {
@@ -123,15 +108,12 @@ const yt = {
 		this.seek(Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * this.duration());
 		this.progress();
 	},
-	showControls() {
+	showControls(state = player?.getPlayerState()) {
 		clearTimeout(this.controlTimer);
-		const state = player?.getPlayerState();
 		const playing = state === YT.PlayerState.PLAYING;
 		const visible = [YT.PlayerState.PLAYING, YT.PlayerState.PAUSED, YT.PlayerState.ENDED].includes(state);
 		this.ui.control?.classList.toggle('active', visible);
-		if (playing) {
-			this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
-		}
+		if (playing) this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
 	},
 	play: () => player?.playVideo(),
 	pause: () => player?.pauseVideo(),

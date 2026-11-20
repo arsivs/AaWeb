@@ -71,13 +71,13 @@ function yt_historyRender() {
 	if (!box) return;
 	if (!history.length) box.innerHTML = "";
 
-	box.innerHTML = `<p class="history-haad">Son Aramalar<b>Tümünü Temizle</b></p>`;
-	box.querySelector(".history-haad b").onclick = (e) => {
+	box.innerHTML = history.length ? `<p class="history-haad">Son Aramalar<b>Tümünü Temizle</b></p>` : "";
+	box.querySelector(".history-haad b")?.addEventListener("click", e => {
 		e.stopPropagation();
 		Ayarlar.remove("sonAramalar");
 		Ayarlar.remove("last_play");
 		box.innerHTML = "";
-	};
+	});
 
 	history.forEach((item, index) => {
 		box.insertAdjacentHTML("beforeend", `<p class="history-item">

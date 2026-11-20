@@ -68,8 +68,13 @@ const yt = {
 		const playing = state === YT.PlayerState.PLAYING;
 		clearInterval(this.progressTimer);
 		this.progress();
-		if (playing) this.showControls(true);
-		else this.ui.control?.classList.remove('active');
+		if (playing) {
+			this.showControls(true);
+			this.ui.overlay.classList.add('block');
+		} else {
+			this.ui.control?.classList.remove('active');
+			this.ui.overlay.classList.remove('block');
+		}
 		this.ui.playIcon?.classList.toggle('icon-pause', playing);
 
 		if (playing) {

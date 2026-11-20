@@ -345,7 +345,7 @@
 .p_control .progress::before {
 	content: "";
 	display: block;
-	width: var(--progress);
+	width: calc(var(--progress) * 1%);
 	height: 100%;
 	background: #24b9ff;
 	border-radius: inherit;

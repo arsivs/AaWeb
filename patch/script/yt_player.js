@@ -157,6 +157,12 @@ const yt = {
 		const time = this.p_control?.querySelector(".time");
 		if (time) time.textContent = `${format(duration - current)} / ${format(duration)}`;
 	},
+	seekProgress(e) {
+		if (!player) return;
+		const rect = e.currentTarget.getBoundingClientRect();
+		this.seek((e.clientX - rect.left) / rect.width * this.duration());
+		this.progress();
+	},
 
 	play: () => player?.playVideo(),
 	pause: () => player?.pauseVideo(),

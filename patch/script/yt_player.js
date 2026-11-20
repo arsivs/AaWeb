@@ -142,6 +142,10 @@ const yt = {
 		const duration = player.getDuration();
 		$("html").style.setProperty("--progress", duration ? player.getCurrentTime() / duration * 100 : 0);
 	},
+	full_Screen() {
+		if (!player) return;
+		$(".yt_content")?.classList.toggle("fullscreen");
+	}
 
 	play: () => player?.playVideo(),
 	pause: () => player?.pauseVideo(),

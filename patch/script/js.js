@@ -159,10 +159,6 @@ function responsive(width, split = false) {
 	});
 }
 
-function full_Screen(e) {
-	$(".yt_content")?.classList.toggle("fullscreen");
-}
-
 function sendToCar(id) {
 	if (window.AutoXMedia) {
 		let select = $(`[data-id="${id}"]`), track = {

@@ -266,10 +266,14 @@
 	overflow: hidden;
 }
 .yt_content .rt::before {
+	display: none;
 	content: "";
 	position: absolute;
 	inset: 0;
 	z-index: 1;
+}
+.yt_content .rt.block::before {
+	display: block;
 }
 .yt_content.fullscreen .rt {
 	position: absolute !important;

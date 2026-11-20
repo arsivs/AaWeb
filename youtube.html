@@ -166,10 +166,10 @@ function handleKey(d) {
 			<p>Zihninde çalan o melodiyi, içinden mırıldandığın o ilk şarkıyı buraya bırak; ritmi başlatalım...</p>
 		</div>
 		<div class="p_control">
-			<i class="icon-prev"></i>
-			<i class="icon-playerplay big"></i>
-			<i class="icon-next"></i>
-			<i class="icon-fullscreen"></i>
+			<i class="icon-prev" onclick="yt.prev();"></i>
+			<i class="icon-playerplay big" onclick="yt.toggle();"></i>
+			<i class="icon-next" onclick="yt.next();"></i>
+			<i class="icon-fullscreen" onclick="full_Screen(this);"></i>
 			<div class="progress"></div>
 			<div class="time"><b class="x1">--</b> / <b class="x2">--</b></div>
 		</div>

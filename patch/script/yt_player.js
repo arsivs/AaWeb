@@ -22,8 +22,9 @@ const yt = {
 
 	showControls(playing = player?.getPlayerState() === YT.PlayerState.PLAYING) {
 		clearTimeout(this.controlTimer);
+		if (!playing) return;
 		this.ui.control?.classList.add('active');
-		if (playing) this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
+		this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
 	},
 
 	init(id) {

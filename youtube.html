@@ -107,7 +107,7 @@ function handleKey(d) {
 				yt.seek(hedef);
 				msg("ok", "+" + d.stepSec + " sn");
 			} else if (d.action === "hold") {
-				$(".yt_content")?.classList.add("fullscreen");
+				yt.full_Screen();
 			}
 			break;
 
@@ -119,7 +119,7 @@ function handleKey(d) {
 				yt.seek(Math.max(0, yt.time() - d.stepSec));
 				msg("ok", "-" + d.stepSec + " sn");
 			} else if (d.action === "hold") {
-				$(".yt_content")?.classList.remove("fullscreen");
+				startVoice();
 			}
 			break;
 
@@ -169,7 +169,7 @@ function handleKey(d) {
 			<i class="icon-prev" onclick="yt.prev();"></i>
 			<i class="icon-playerplay big" onclick="yt.toggle();"></i>
 			<i class="icon-next" onclick="yt.next();"></i>
-			<i class="icon-fullscreen" onclick="full_Screen(this);"></i>
+			<i class="icon-fullscreen" onclick="yt.full_Screen();"></i>
 			<div class="progress"></div>
 			<div class="time"><b class="x1">--</b> / <b class="x2">--</b></div>
 		</div>

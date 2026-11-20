@@ -266,7 +266,6 @@
 	overflow: hidden;
 }
 .yt_content .rt::before {
-	display: none;
 	content: "";
 	position: absolute;
 	inset: 0;

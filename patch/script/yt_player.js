@@ -10,6 +10,7 @@ const yt = {
 	currentId: null,
 	controlTimer: null,
 	progressTimer: null,
+	p_control: null,
 
 	init(id) {
 		if (!ytReady) return msg("err", "YouTube API henüz hazır değil");
@@ -56,23 +57,36 @@ const yt = {
 			},
 			events: {
 				onReady: (event) => {
-					// İlk video otomatik başlamazsa başlat
+					this.p_control = $(".p_control");
 					if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
 						event.target.playVideo();
 						event.target.setVolume(100);
 					}
+
 					$(".yt_content .rt")?.addEventListener("click", () => {
-						yt.controls(event.target.getPlayerState());
+						if (!this.p_control) return;
+						this.p_control.classList.add("active");
+						clearTimeout(this.controlTimer);
+						if (event.target.getPlayerState() === YT.PlayerState.PLAYING) {
+							this.controlTimer = setTimeout(() => { this.p_control.classList.remove("active"); }, 5000);
+						}
 					});
 				},
 				onStateChange: (event) => {
 					const state = event.data;
-					yt.controls(state);
+					clearInterval(this.progressTimer);
+					clearTimeout(this.controlTimer);
+					this.progress();
+
+					this.p_control?.classList.add("active");
 
 					if (state === YT.PlayerState.PLAYING) {
 						window.AutoXMedia?.setPlaying(true);
 						$(`.poster-card.active .action`)?.classList.add("active");
+						this.p_control.querySelector(".icon-playerplay").classList.add("icon-pause");
 						disableCaptions();
+						this.progressTimer = setInterval(() => this.progress(), 250);
+						this.controlTimer = setTimeout(() => this.p_control?.classList.remove("active"), 5000);
 					}
 
 					if ([YT.PlayerState.PAUSED,
@@ -80,10 +94,11 @@ const yt = {
 					  YT.PlayerState.ENDED].includes(state)) {
 						window.AutoXMedia?.setPosition(event.target.getCurrentTime(), false);
 						$(`.action.active`)?.classList.remove("active");
+						this.p_control.querySelector(".icon-playerplay").classList.remove("icon-pause");
 					}
 
 					if (state === YT.PlayerState.ENDED) {
-					    // yt.next();
+						// yt.next();
 					}
 				},
 				onApiChange: (event) => {
@@ -121,29 +136,11 @@ const yt = {
 		if (this.index <= 0) return;
 		this.init(this.history[this.index - 1]);
 	},
-	// Control Bar alanı
-	controls(state) {
-		const box = $(".p_control");
-		if (!box) return;
-
-		clearTimeout(this.controlTimer);
-		clearInterval(this.progressTimer);
-		box.classList.add("active");
-
-		const update = () => {
-		    const duration = player?.getDuration() || 0;
-		    document.documentElement.style.setProperty(
-				"--progress",
-				duration ? player.getCurrentTime() / duration * 100 : 0
-			);
-		};
-
-		update();
-
-		if (state === YT.PlayerState.PLAYING) {
-			this.controlTimer = setTimeout(() => box.classList.remove("active"), 5000);
-			this.progressTimer = setInterval(update, 250);
-		}
+	// Progress Bar alanı
+	progress() {
+		if (!player) return;
+		const duration = player.getDuration();
+		$("html").style.setProperty("--progress", duration ? player.getCurrentTime() / duration * 100 : 0);
 	},
 
 	play: () => player?.playVideo(),

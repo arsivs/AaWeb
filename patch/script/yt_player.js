@@ -145,6 +145,7 @@ const yt = {
 	full_Screen() {
 		if (!player) return;
 		$(".yt_content")?.classList.toggle("fullscreen");
+		this.p_control.querySelector(".icon-fullscreen").classList.toggle("icon-fullscreen-exit");
 	},
 
 	play: () => player?.playVideo(),

@@ -63,7 +63,7 @@ const yt = {
 		clearInterval(this.progressTimer);
 		this.progress();
 		if (playing) {
-			this.showControls(true);
+			this.showControls();
 			this.ui.overlay.classList.add('block');
 		} else {
 			this.ui.control?.classList.remove('active');
@@ -123,14 +123,12 @@ const yt = {
 		this.seek(Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * this.duration());
 		this.progress();
 	},
-	showControls(playing = player?.getPlayerState() === YT.PlayerState.PLAYING) {
+	showControls() {
 		clearTimeout(this.controlTimer);
 		const state = player?.getPlayerState();
-		if (!playing && ![YT.PlayerState.PAUSED, YT.PlayerState.ENDED].includes(state)) {
-			this.ui.control?.classList.remove('active');
-			return;
-		}
-		this.ui.control?.classList.add('active');
+		const playing = state === YT.PlayerState.PLAYING;
+		const visible = [YT.PlayerState.PLAYING, YT.PlayerState.PAUSED, YT.PlayerState.ENDED].includes(state);
+		this.ui.control?.classList.toggle('active', visible);
 		if (playing) {
 			this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
 		}

@@ -20,13 +20,6 @@ const yt = {
 		this.ui.overlay?.addEventListener('click', () => this.showControls());
 	},
 
-	showControls(playing = player?.getPlayerState() === YT.PlayerState.PLAYING) {
-		clearTimeout(this.controlTimer);
-		if (!playing) return;
-		this.ui.control?.classList.add('active');
-		this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
-	},
-
 	init(id) {
 		if (!ytReady) return msg('err', 'YouTube API henüz hazır değil');
 		if (!id) return;
@@ -129,6 +122,18 @@ const yt = {
 		if (!rect.width) return;
 		this.seek(Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * this.duration());
 		this.progress();
+	},
+	showControls(playing = player?.getPlayerState() === YT.PlayerState.PLAYING) {
+		clearTimeout(this.controlTimer);
+		const state = player?.getPlayerState();
+		if (!playing && ![YT.PlayerState.PAUSED, YT.PlayerState.ENDED].includes(state)) {
+			this.ui.control?.classList.remove('active');
+			return;
+		}
+		this.ui.control?.classList.add('active');
+		if (playing) {
+			this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
+		}
 	},
 	play: () => player?.playVideo(),
 	pause: () => player?.pauseVideo(),

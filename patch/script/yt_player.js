@@ -136,16 +136,26 @@ const yt = {
 		if (this.index <= 0) return;
 		this.init(this.history[this.index - 1]);
 	},
-	// Progress Bar alanı
-	progress() {
-		if (!player) return;
-		const duration = player.getDuration();
-		$("html").style.setProperty("--progress", duration ? player.getCurrentTime() / duration * 100 : 0);
-	},
 	full_Screen() {
 		if (!player) return;
 		$(".yt_content")?.classList.toggle("fullscreen");
 		this.p_control.querySelector(".icon-fullscreen").classList.toggle("icon-fullscreen-exit");
+	},
+	// Progress Bar alanı
+	progress() {
+		if (!player) return;
+		const duration = player.getDuration() || 0;
+		const current = player.getCurrentTime() || 0;
+		$("html").style.setProperty("--progress", duration ? current / duration * 100 : 0);
+		const format = s => {
+			s = Math.floor(s);
+			const h = Math.floor(s / 3600);
+			const m = Math.floor(s % 3600 / 60);
+			const sec = String(s % 60).padStart(2, "0");
+			return h ? `${h}:${String(m).padStart(2, "0")}:${sec}` : `${m}:${sec}`;
+		};
+		const time = this.p_control?.querySelector(".time");
+		if (time) time.textContent = `${format(duration - current)} / ${format(duration)}`;
 	},
 
 	play: () => player?.playVideo(),

@@ -359,9 +359,6 @@
 .p_control i {
 	cursor: pointer;
 }
-.p_control .time b {
-	font-weight: normal;
-}
 
 .yt_content .rt .bg-cover {
 	display: none;

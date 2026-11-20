@@ -112,7 +112,8 @@ const yt = {
 		clearTimeout(this.controlTimer);
 		const playing = state === YT.PlayerState.PLAYING;
 		const visible = [YT.PlayerState.PLAYING, YT.PlayerState.PAUSED, YT.PlayerState.ENDED].includes(state);
-		this.ui.control?.classList.toggle('active', visible);
+		if (visible) this.ui.control?.classList.add('active');
+		else if (state !== YT.PlayerState.BUFFERING) this.ui.control?.classList.remove('active');
 		if (playing) this.controlTimer = setTimeout(() => this.ui.control?.classList.remove('active'), 5000);
 	},
 	play: () => player?.playVideo(),

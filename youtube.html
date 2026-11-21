@@ -99,25 +99,21 @@ function handleKey(d) {
 		case 87: // Sonraki
 			if (d.action === "press") {
 				yt.next();
-				msg("ok", "Sonraki");
 			} else if (d.action === "double") {
+				yt.full_Screen();
+			} else if (d.action === "hold") {
 				const dur = yt.duration();
 				let hedef = yt.time() + d.stepSec;
 				if (dur > 0) hedef = Math.min(hedef, dur - 1);
 				yt.seek(hedef);
-				msg("ok", "+" + d.stepSec + " sn");
-			} else if (d.action === "hold") {
-				yt.full_Screen();
 			}
 			break;
 
 		case 88: // Önceki
 			if (d.action === "press") {
 				yt.prev();
-				msg("ok", "Önceki");
 			} else if (d.action === "double") {
 				yt.seek(Math.max(0, yt.time() - d.stepSec));
-				msg("ok", "-" + d.stepSec + " sn");
 			} else if (d.action === "hold") {
 				startVoice();
 			}
@@ -126,14 +122,12 @@ function handleKey(d) {
 		case 126:
 			if (d.action === "press") {
 				yt.toggle();
-				msg("ok", "Oynat");
 			}
 			break;
 
 		case 127:
 			if (d.action === "press") {
 				yt.toggle();
-				msg("ok", "Duraklat");
 			}
 			break;
 

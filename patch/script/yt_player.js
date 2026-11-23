@@ -60,6 +60,12 @@ const yt = {
 	onState(e) {
 		const state = e.data;
 		const playing = state === YT.PlayerState.PLAYING;
+		if (playing) {
+			window.AutoXMedia?.setPlaying(true);
+		} else if ([YT.PlayerState.PAUSED, YT.PlayerState.BUFFERING, YT.PlayerState.ENDED].includes(state)) {
+			window.AutoXMedia?.setPosition(e.target.getCurrentTime(), false);
+		}
+
 		clearInterval(this.progressTimer);
 		this.progress();
 		if (playing) this.progressTimer = setInterval(() => this.progress(), 1000);
